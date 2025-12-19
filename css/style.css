@@ -24,12 +24,12 @@
                   0 0 30px var(--neon-green);
     
     /* Card colors */
-    --card-bg: rgba(42, 35, 30, 0.85);
-    --card-border: #4a3f35;
+    --card-bg: rgba(43, 27, 15, 0.85);
+    --card-border: #e0bc9b;
     
     /* Fonts */
     --font-handwritten: 'Caveat', cursive;
-    --font-body: 'Kreon', serif;
+    --font-body: 'Asar', serif;
 }
 
 /* === RESET & BASE === */
@@ -43,7 +43,7 @@ body {
     background-color: var(--bg-dark);
     background-image: 
         linear-gradient(rgba(26, 15, 10, 0.7), rgba(26, 15, 10, 0.7)),
-        url('../assets/bar-bg.jpg');
+        url('../assets/bar-bg.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -51,7 +51,7 @@ body {
     color: var(--text-light);
     font-family: var(--font-body);
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.8;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -83,13 +83,13 @@ main {
 }
 
 .neon-sign-img {
-    max-width: 700px;
+    max-width: 1000px;
     width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
-    filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.6))
-            drop-shadow(0 0 40px rgba(255, 179, 71, 0.4));
+    filter: drop-shadow(0 0 20px rgba(9, 225, 70, 0.605))
+            drop-shadow(0 0 40px rgba(255, 50, 43, 0.484));
 }
 
 /* === INTRO SECTION === */
@@ -185,7 +185,7 @@ main {
 
 .card-desc {
     font-size: 1rem;
-    color: var(--text-dim);
+    color: var(--text-light);
 }
 
 /* === FOOTER === */
@@ -247,7 +247,7 @@ footer a:hover {
 /* === ABOUT PAGE SPECIFIC STYLES === */
 
 .content-page {
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 .page-hero {
@@ -257,7 +257,7 @@ footer a:hover {
 }
 
 .page-neon-sign {
-    max-width: 700px;
+    max-width: 1000px;
     width: 100%;
     height: auto;
     display: block;
@@ -289,7 +289,7 @@ footer a:hover {
 
 /* Semi-transparent frames around story sections */
 .story, .mission {
-    background-color: rgba(33, 31, 31, 0.521);
+    background-color: rgba(33, 31, 31, 0.002);
     border: 1px solid var(--card-border);
     padding: 2.5rem;
     border-radius: 8px;
@@ -298,7 +298,7 @@ footer a:hover {
 
 .page-content h2 {
     font-family: var(--font-handwritten);
-    font-size: 2.5rem;
+    font-size: 4rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -308,32 +308,7 @@ footer a:hover {
 
 .page-content p {
     margin-bottom: 1.5rem;
-    line-height: 1.8;
-}
-
-/* Simplified timeline list - two column grid */
-.timeline-list {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);  /* Two columns */
-    gap: 0.75rem;
-}
-
-.timeline-list li {
-    padding: 0.75rem 1rem;
-    background-color: rgba(42, 35, 30, 0.5);
-    border-left: 3px solid var(--neon-pink);
-    border-radius: 4px;
-    color: var(--text-light);
-    transition: all 0.3s ease;
-}
-
-.timeline-list li:hover {
-    background-color: rgba(42, 35, 30, 0.8);
-    border-left-color: var(--neon-amber);
-    transform: translateX(5px);
+    line-height: 1.6;
 }
 
 /* Links section header frame */
@@ -354,7 +329,7 @@ footer a:hover {
 .links-intro {
     margin: 0;
     font-style: italic;
-    color: var(--text-dim);
+    color: var(--text-light);
 }
 
 /* Link categories */
@@ -376,8 +351,8 @@ footer a:hover {
     font-family: var(--font-handwritten);
     font-size: 3rem;
     font-weight: 700;
-    color: var(--neon-amber);
-    text-shadow: var(--amber-glow);
+    color: var(--neon-yellow);
+    text-shadow: var(--green-glow);
 }
 
 /* Pull tab styling for links */
@@ -508,7 +483,7 @@ footer a:hover {
 
 /* Link descriptions below cards */
 .link-description {
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: var(--text-dim);
     margin-top: 0.5rem;
     font-style: italic;
