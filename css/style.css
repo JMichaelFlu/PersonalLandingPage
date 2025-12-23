@@ -9,6 +9,7 @@
     --neon-pink: #ff6b9d;      /* Primary - card titles, main accents */
     --neon-amber: #ffb347;      /* Secondary - highlights, warm glow */
     --neon-green: #39ff14;      /* Tertiary - links, subtle accents */
+    --neon-cyan: #00ffff;       /* Quaternary - additional variety */
     
     /* Individual glow effects */
     --pink-glow: 0 0 10px var(--neon-pink),
@@ -22,6 +23,10 @@
     --green-glow: 0 0 10px var(--neon-green),
                   0 0 20px var(--neon-green),
                   0 0 30px var(--neon-green);
+    
+    --cyan-glow: 0 0 10px var(--neon-cyan),
+                 0 0 20px var(--neon-cyan),
+                 0 0 30px var(--neon-cyan);
     
     /* Card colors */
     --card-bg: rgba(43, 27, 15, 0.85);
@@ -70,20 +75,25 @@ a:hover {
 /* === MAIN CONTENT === */
 main {
     flex: 1;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 4rem 2rem;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* === HERO SECTION === */
 .hero {
     text-align: center;
     margin-bottom: 3rem;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .neon-sign-img {
-    max-width: 1000px;
+    max-width: 1200px;
     width: 100%;
     height: auto;
     display: block;
@@ -97,6 +107,8 @@ main {
     text-align: center;
     margin-bottom: 4rem;
     color: var(--text-light);
+    max-width: 800px;
+    width: 100%;
 }
 
 .intro p {
@@ -108,7 +120,9 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    width: 100%;
 }
 
 .nav-card {
@@ -119,17 +133,17 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     color: var(--text-light);
     text-decoration: none;
     backdrop-filter: blur(5px);
 }
 
-/* Alternate card hover colors for variety */
+/* Enhanced hover effects for cards */
 .nav-card:nth-child(1):hover {
     border-color: var(--neon-pink);
-    box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(255, 107, 157, 0.4);
+    transform: translateY(-5px) scale(1.02) rotate(-1deg);
 }
 
 .nav-card:nth-child(1):hover .card-title {
@@ -138,8 +152,8 @@ main {
 
 .nav-card:nth-child(2):hover {
     border-color: var(--neon-amber);
-    box-shadow: 0 0 20px rgba(255, 179, 71, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(255, 179, 71, 0.4);
+    transform: translateY(-5px) scale(1.02) rotate(1deg);
 }
 
 .nav-card:nth-child(2):hover .card-title {
@@ -148,8 +162,8 @@ main {
 
 .nav-card:nth-child(3):hover {
     border-color: var(--neon-green);
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+    transform: translateY(-5px) scale(1.02) rotate(-1deg);
 }
 
 .nav-card:nth-child(3):hover .card-title {
@@ -157,24 +171,24 @@ main {
 }
 
 .nav-card:nth-child(4):hover {
-    border-color: var(--neon-pink);
-    box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
-    transform: translateY(-2px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    transform: translateY(-5px) scale(1.02) rotate(1deg);
 }
 
 .nav-card:nth-child(4):hover .card-title {
-    text-shadow: var(--pink-glow);
+    text-shadow: var(--cyan-glow);
 }
 
 .card-title {
     font-family: var(--font-handwritten);
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--neon-pink);  /* Default pink for all titles */
+    color: var(--neon-pink);
     transition: all 0.3s ease;
 }
 
-/* Alternate some title colors for variety */
+/* Alternate title colors */
 .nav-card:nth-child(2) .card-title {
     color: var(--neon-amber);
 }
@@ -183,9 +197,27 @@ main {
     color: var(--neon-green);
 }
 
+.nav-card:nth-child(4) .card-title {
+    color: var(--neon-cyan);
+}
+
 .card-desc {
     font-size: 1rem;
     color: var(--text-light);
+}
+
+/* === DISCORD WIDGET SECTION === */
+.discord-section {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.discord-section iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* === FOOTER === */
@@ -196,6 +228,7 @@ footer {
     color: var(--text-dim);
     font-size: 0.9rem;
     background-color: rgba(26, 15, 10, 0.9);
+    width: 100%;
 }
 
 footer a {
@@ -213,7 +246,7 @@ footer a:hover {
     }
     
     .neon-sign-img {
-        max-width: 300px;
+        max-width: 100%;
     }
     
     .intro {
@@ -224,40 +257,28 @@ footer a:hover {
         padding: 2rem 1rem;
     }
     
-    /* About page mobile adjustments */
-    .story, .mission {
-        padding: 1.5rem;
-    }
-    
-    .link-list {
-        grid-template-columns: 1fr;
-    }
-    
-    .page-content h2 {
-        font-size: 2rem;
+    .discord-section iframe {
+        width: 100% !important;
+        max-width: 350px;
     }
 }
-
- /* Stack timeline list on mobile */
-    .timeline-list {
-        grid-template-columns: 1fr;
-    }
-
 
 /* === ABOUT PAGE SPECIFIC STYLES === */
 
 .content-page {
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 .page-hero {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     position: relative;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .page-neon-sign {
-    max-width: 1000px;
+    max-width: 1200px;
     width: 100%;
     height: auto;
     display: block;
@@ -268,62 +289,137 @@ footer a:hover {
 
 .back-link {
     display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--card-bg);
+    border: 2px solid var(--neon-amber);
+    border-radius: 8px;
     color: var(--neon-amber);
     font-size: 1.1rem;
+    font-weight: 600;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .back-link:hover {
+    background-color: rgba(255, 179, 71, 0.15);
+    box-shadow: 0 0 20px rgba(255, 179, 71, 0.4);
     text-shadow: var(--amber-glow);
     transform: translateX(-5px);
 }
 
 .page-content {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .page-content section {
     margin-bottom: 4rem;
 }
 
-/* Semi-transparent frames around story sections */
-.story, .mission {
-    background-color: rgba(33, 31, 31, 0.002);
+/* Section headers - wider than content */
+.section-header {
+    background-color: rgba(42, 35, 30, 0.7);
     border: 1px solid var(--card-border);
-    padding: 2.5rem;
+    padding: 1.5rem;
     border-radius: 8px;
     backdrop-filter: blur(8px);
+    margin-bottom: 2rem;
+    max-width: 1000px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.page-content h2 {
+.section-header h2 {
     font-family: var(--font-handwritten);
     font-size: 4rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin: 0;
     color: var(--neon-amber);
     text-shadow: var(--amber-glow);
 }
 
-.page-content p {
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+/* Content boxes - narrower than headers */
+.story {
+    background-color: rgba(33, 31, 31, 0.3);
+    border: 1px solid var(--card-border);
+    padding: 2rem;
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    max-width: 800px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Links section header frame */
+.story p,
+.story ul {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.story ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.story ul li {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.story ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--neon-amber);
+    font-size: 1.2rem;
+}
+
+/* Nested lists under Building Things */
+.story ul ul {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.story ul ul li {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.story ul ul li::before {
+    content: "•";
+    color: var(--neon-green);
+}
+
+/* === LINKS SECTION === */
+
+.links {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .links-header-frame {
     background-color: rgba(42, 35, 30, 0.7);
     border: 1px solid var(--card-border);
-    padding: 2.5rem;
+    padding: 2rem;
     border-radius: 8px;
     backdrop-filter: blur(8px);
     margin-bottom: 3rem;
     text-align: center;
+    max-width: 1000px;
 }
 
 .links-header-frame h2 {
+    font-family: var(--font-handwritten);
+    font-size: 3.5rem;
+    font-weight: 700;
     margin-bottom: 1rem;
+    color: var(--neon-cyan);
+    text-shadow: var(--cyan-glow);
 }
 
 .links-intro {
@@ -332,16 +428,18 @@ footer a:hover {
     color: var(--text-light);
 }
 
-/* Link categories */
 .link-category {
     margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .category-header {
     background-color: rgba(36, 35, 34, 0.785);
     border: 1px solid var(--card-border);
     padding: 1rem;
-    border-radius: px;
+    border-radius: 8px;
     margin-bottom: 1.5rem;
     text-align: center;
 }
@@ -349,10 +447,10 @@ footer a:hover {
 .category-header h3 {
     margin: 0;
     font-family: var(--font-handwritten);
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: var(--neon-yellow);
-    text-shadow: var(--green-glow);
+    color: var(--neon-amber);
+    text-shadow: var(--amber-glow);
 }
 
 /* Pull tab styling for links */
@@ -360,7 +458,7 @@ footer a:hover {
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1.25rem;
 }
 
@@ -388,8 +486,6 @@ footer a:hover {
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transform-origin: bottom left;
-    
-    /* Perforated edge effect at top */
     background-image: 
         repeating-linear-gradient(
             90deg,
@@ -412,13 +508,13 @@ footer a:hover {
     font-weight: 600;
 }
 
-/* Different colors for different categories */
+/* Link category color variations */
 .link-category:nth-child(2) .link-list a {
-    border-color: whitesmoke;
+    border-color: var(--card-border);
 }
 
 .link-category:nth-child(2) .link-list a:hover {
-    background-color: rgba(29, 28, 28, 0.823);
+    background-color: rgba(255, 107, 157, 0.15);
     border-color: var(--neon-pink);
     box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
     transform: translateY(-5px) scale(1.02);
@@ -427,10 +523,6 @@ footer a:hover {
 .link-category:nth-child(2) .link-list a i,
 .link-category:nth-child(2) .link-list a .platform-name {
     color: var(--neon-pink);
-}
-
-.link-category:nth-child(3) .link-list a {
-    border-color: whitesmoke;
 }
 
 .link-category:nth-child(3) .link-list a:hover {
@@ -445,10 +537,6 @@ footer a:hover {
     color: var(--neon-amber);
 }
 
-.link-category:nth-child(4) .link-list a {
-    border-color: whitesmoke;
-}
-
 .link-category:nth-child(4) .link-list a:hover {
     background-color: rgba(57, 255, 20, 0.15);
     border-color: var(--neon-green);
@@ -461,29 +549,24 @@ footer a:hover {
     color: var(--neon-green);
 }
 
-.link-category:nth-child(5) .link-list a {
-    border-color: whitesmoke;
-}
-
 .link-category:nth-child(5) .link-list a:hover {
-    background-color: rgba(255, 107, 157, 0.15);
-    border-color: var(--neon-pink);
-    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+    background-color: rgba(0, 255, 255, 0.15);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
     transform: translateY(-5px) scale(1.02);
 }
 
 .link-category:nth-child(5) .link-list a i,
 .link-category:nth-child(5) .link-list a .platform-name {
-    color: var(--neon-pink);
+    color: var(--neon-cyan);
 }
 
 .link-list a:hover {
     text-shadow: none;
 }
 
-/* Link descriptions below cards */
 .link-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-dim);
     margin-top: 0.5rem;
     font-style: italic;
@@ -515,12 +598,13 @@ footer a:hover {
     margin: 0;
 }
 
-/* Contact cards - similar to landing page nav cards */
+/* Contact cards grid - handles email + Discord */
 .contact-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     margin-bottom: 4rem;
+    align-items: start;
 }
 
 .contact-card {
@@ -537,6 +621,8 @@ footer a:hover {
     text-decoration: none;
     backdrop-filter: blur(5px);
     text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .contact-card i {
@@ -563,43 +649,16 @@ footer a:hover {
     transform: translateY(-3px);
 }
 
-.contact-card:hover .contact-method {
-    text-shadow: var(--pink-glow);
-}
-
+.contact-card:hover .contact-method,
 .contact-card:hover i {
     text-shadow: var(--pink-glow);
 }
 
-/* Alternate colors for different cards */
-.contact-card:nth-child(2) i,
-.contact-card:nth-child(2) .contact-method {
-    color: var(--neon-amber);
-}
-
-.contact-card:nth-child(2):hover {
-    border-color: var(--neon-amber);
-    box-shadow: 0 0 20px rgba(255, 179, 71, 0.3);
-}
-
-.contact-card:nth-child(2):hover .contact-method,
-.contact-card:nth-child(2):hover i {
-    text-shadow: var(--amber-glow);
-}
-
-.contact-card:nth-child(3) i,
-.contact-card:nth-child(3) .contact-method {
-    color: var(--neon-green);
-}
-
-.contact-card:nth-child(3):hover {
-    border-color: var(--neon-green);
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
-}
-
-.contact-card:nth-child(3):hover .contact-method,
-.contact-card:nth-child(3):hover i {
-    text-shadow: var(--green-glow);
+/* Discord iframe in contact page */
+.contact-cards iframe {
+    justify-self: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Contact form section */
@@ -678,14 +737,25 @@ footer a:hover {
     text-shadow: var(--pink-glow);
 }
 
-.form-note {
-    margin-top: 1rem;
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    font-style: italic;
-    text-align: center;
-}
-
-.form-note a {
-    color: var(--neon-amber);
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+    .story, .mission {
+        padding: 1.5rem;
+    }
+    
+    .link-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-content h2, .section-header h2 {
+        font-size: 2.5rem;
+    }
+    
+    .links-header-frame h2 {
+        font-size: 2.5rem;
+    }
+    
+    .category-header h3 {
+        font-size: 2rem;
+    }
 }
