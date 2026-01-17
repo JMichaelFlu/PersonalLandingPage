@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bearly In a Hurry - Jacob Fluharty</title>
+    <meta name="description" content="A naive yet jaded millennial trying to find his way. Lifelong learner, community builder, and collaborator trying to make a difference.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,16 +35,19 @@
 </head>
 
 <body>
-    <main>
+    <!-- Skip to content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main id="main-content">
         <div class="hero">
             <img src="assets/neon-sign.png"
                 alt="Welcome to Bearly in a Hurry - Life's too short to live in fast forward" class="neon-sign-img">
         </div>
 
         <div class="intro">
-            <p>Welcome to my little corner of the internet. Folks call me Jacob and I am embracing a slower-paced kind of life. I am efusing to see the world as it is,
-                but as I think it should be. Take a spin through
-                the cards below to learn more about me and what I am working on.</p>
+            <p>Welcome, grab a chair and make yourself comfortable. Here we embrace a slower-paced kind of life. We try to not take life too seriously, and remove ourselves from the rat race of modern living in a late stage capitalist landscape.
+                Join me as I refuse to see the world as it is,
+                but instead as I think it should be.</p>
             <p>I am always looking for feedback, advice, corrections, and new connections. Don't be shy, reach out at
                 any of the methods you prefer to talk about a specific note from the garden or anything else that comes to mind.</p>
         </div>
@@ -58,20 +62,27 @@
 
             <a href="/about.html" class="nav-card">
                 <span class="card-title">About Me</span>
-                <span class="card-desc">A little bit about where I came from, how that shaped me into this person today,
-                    and what I hope to contribute to the world.</span>
+                <span class="card-desc">How did I get to this place in life, what did I become, and what do I hope for my future? Hopefully this answers those questions.</span>
+            </a>
+
+            <a href="https://wiki.fluharty.link/now" class="nav-card">
+                <span class="card-title">What I'm Doing Now</span>
+                <span class="card-desc">My Now Page as conceived by Derek Sivers, a snapshot of my current projects, interests, and focus areas.</span>
             </a>
 
             <a href="https://longhandcompass.com" class="nav-card">
-                <span class="card-title">Academic Support</span>
-                <span class="card-desc">Online tutoring and academic mentoring from yours truly. Focusing on Humanities
-                    and Social Sciences for high school and early college years students.</span>
+                <span class="card-title">Longhand Compass Academic Support</span>
+                <span class="card-desc">Online tutoring and academic mentoring services primarily for high school students focused on the humanities and social sciences. But I work with students beyond high school as well</span>
             </a>
 
             <a href="/contact.html" class="nav-card">
-                <span class="card-title">Let's Connect</span>
-                <span class="card-desc">Reach out directly, join the Discord community, or find me on your favorite
-                    social platform.</span>
+                <span class="card-title">My Internet Footprint</span>
+                <span class="card-desc">A pretty comprehensive overview of my presence across the web, including social media, profile pages, and other online activities.</span>
+            </a>
+
+            <a href="/colophon.html" class="nav-card">
+                <span class="card-title">Colophon</span>
+                <span class="card-desc">How this site was built, the technology stack, design philosophy, and credits.</span>
             </a>
             </div>
         </nav>
@@ -80,6 +91,25 @@
     <footer>
         <p>© 2025 Bearly In a Hurry • <a href="mailto:jacob@fluharty.link">Send me an E-mail</a></p>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/animations.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jacob Fluharty",
+        "url": "https://fluharty.link",
+        "sameAs": [
+            "https://wiki.fluharty.link",
+            "https://longhandcompass.com"
+        ],
+        "jobTitle": "Academic Support Specialist",
+        "description": "Lifelong learner, community builder, and academic support specialist helping neurodivergent students thrive."
+    }
+    </script>
 </body>
 
 </html>
