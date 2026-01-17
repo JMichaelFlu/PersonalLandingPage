@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Jacob Fluharty</title>
+    <meta name="description" content="My origin story, what I'm about, and how I'm building the future I should have started a decade ago.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,10 +35,13 @@
 </head>
 
 <body>
+    <!-- Skip to content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- ========== STICKY BACK BUTTON ========== -->
     <a href="/" class="back-link back-link-sticky">← Home</a>
 
-    <main class="content-page">
+    <main id="main-content" class="content-page">
         <!-- ========== HERO SECTION ========== -->
         <div class="page-hero">
             <img src="assets/about-me-neon.png" alt="About Me" class="page-neon-sign">
@@ -46,30 +50,32 @@
         <article class="page-content">
             <section class="story">
                 <h2>How I Got Here</h2>
-                <p>As a kid, I became really good at reading the room - predicting moods, diffusing tension, making sure
-                    everyone else was happy. It's what you do when your daily life is filled with a lot of conflict and
-                    chaos. I was the "so mature for your age" kid, the one people came to when they needed to unload
-                    their problems. I wanted to be helpful, liked, useful - but also invisible until I decided
-                    otherwise. Attention was risky. Being seen meant being vulnerable. What I never learned was how to
+                <p>As a kid, I became really good at reading the room. I could predict peoples moods and became adept at diffusing tension, making sure
+                    everyone around me was happy. It's what you do when your daily life is filled with a lot of conflict and
+                    chaos. I was one of those "so mature for your age" kids. Adults let me hang out in the room while the other kids were sent away for being "too much". 
+                    I wanted to be helpful, liked, useful, so I did everything I could to be all those things. But more than that, I also wanted to be invisible. 
+                    Attention was risky. Being seen meant being vulnerable. What I never learned was how to
                     have my own needs, or handle my own emotions. I could tell you what everyone in the room was
-                    feeling, but I couldn't tell you what I wanted for dinner without running a full risk assessment. So
+                    feeling and how to best navigate around those feelings, but never how to deal with them when they were my own. So
                     I did what a lot of kids do when the real world feels like a minefield: I escaped into books and
-                    fantasy. In those worlds, I didn't have to be the thermometer. I could just be a person.</p>
+                    fantasy. In those worlds, I didn't want to be invisible, I could finally live.</p>
 
-                <p>I mostly grew up in a small town in southern Arkansas, with a little bit of time on the coast of
+                <p>I grew up in a small town in southern Arkansas, with a little bit of time on the coast of
                     North Carolina (divorced parents offered some options). I was a voracious reader and a massive Star
-                    Wars nerd who tore through all the EU novels, practiced lightsaber techniques in the woods behind my
+                    Wars nerd who tore through all the EU novels, practiced lightsaber fighting in the woods behind my
                     house, and ran a fan site on WebTV. (Look it up if you're unfamiliar; it was peak early-internet
-                    coolness, assuming you loved your Tab button.)</p>
+                    coolness, assuming you loved your Tab button.) Obviously I was very cool. Truth is, I kind of was in a way. Being a chameleon meant I was able 
+                    to be whoever I needed to be for any given situation. Every group and person got their own curated version of me, designed to be the perfect fit for them.
+                    It has led to a lifetime of me wondering who I really am at the end of the day.</p>
 
-                <p>I'm a neurodivergent millennial with a mental health diagnosis who took the scenic route through
-                    life. It wasn't always pretty, but it was filled with lessons that will hopefully inform the second
+                <p>All of this led me to becoming a neurodivergent millennial with a late diagnosed mental health condition who took the scenic route through
+                    life. It hasn't always been pretty, but it's been filled with lessons that will hopefully inform the second
                     half of my life.</p>
             </section>
 
             <section class="story">
                 <h2>The Road Ahead</h2>
-                <p>So what did the past 30-something years lead to? What kind of person emerged from all those
+                <p>So what kind of person emerged from all those
                     experiences? The jury is still out. But here is what I can say about life right now and what I hope
                     for the future:</p>
 
@@ -114,7 +120,7 @@
                         student. And you know what? I'm okay with it. I learned how web hosting works. I coded my own
                         website using AI to work the code. So while I hope I can get better at marketing and earn a
                         stable income, I'm still learning along the way, and that's valuable in its own right.</li>
-                    <li><strong>Digital Garden / PKM System / Personal Wiki:</strong> I have been a slave to
+                    <li><strong>Digital Garden:</strong> I have been a slave to
                         hierarchical, nested folder storage systems my entire life. My notebooks (and now computers)
                         have always had a meticulous taxonomy that was constantly in flux. The aesthetics had to be just
                         right, and everything had to be tagged and nested correctly so I could find it later. Then I
@@ -157,8 +163,6 @@
                     much potential.</p>
 
                 <p>At the end of the day I am basically an underdeveloped multipotentialite, a work-in-progress, and a survivor of the scenic route. I won't be what 10-year-old me imagined. But I'm trying to become someone he'd be proud of—someone he's glad he turned into.</p>
-
-                <p>If you're also a neurodivergent dreamer who doesn't quite fit the mold, if you're building things that might go nowhere but doing it anyway, if you're learning in public and figuring it out as you go—welcome. This is your space too. The navigation is chaotic, the content is unfinished, and that's kind of the point. Let's learn together.</p>
             </section>
         </article>
     </main>
@@ -167,6 +171,22 @@
     <footer>
         <p>© 2025 Bearly In a Hurry • <a href="mailto:jacob@fluharty.link">Send me an E-mail</a></p>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/animations.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Jacob Fluharty",
+            "description": "Neurodivergent learner, community builder, and academic support specialist"
+        }
+    }
+    </script>
 </body>
 
 </html>
