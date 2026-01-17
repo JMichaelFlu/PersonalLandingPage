@@ -186,10 +186,10 @@ main {
 /* === NAVIGATION CARDS === */
 .nav-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-4xl);
-    max-width: 800px;
+    max-width: 1200px;
     width: 100%;
 }
 
@@ -230,6 +230,18 @@ main {
     --card-color: var(--neon-cyan);
     --card-shadow: var(--cyan-shadow);
     --card-glow: var(--cyan-glow);
+}
+
+.nav-card:nth-child(5) {
+    --card-color: var(--neon-pink);
+    --card-shadow: var(--pink-shadow);
+    --card-glow: var(--pink-glow);
+}
+
+.nav-card:nth-child(6) {
+    --card-color: var(--neon-amber);
+    --card-shadow: var(--amber-shadow);
+    --card-glow: var(--amber-glow);
 }
 
 .nav-card:hover {
@@ -646,6 +658,87 @@ footer a:hover {
     box-shadow: var(--green-shadow-medium);
     transform: translateY(-2px);
     text-shadow: var(--green-glow);
+}
+
+/* === ANIMATION CLASSES === */
+
+/* Skip to content link - accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--neon-green);
+    color: var(--bg-dark);
+    padding: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 10000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Fade-in up animation for scroll reveals */
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Neon flicker effect */
+@keyframes neonFlicker {
+    0%, 100% { opacity: 1; }
+    10% { opacity: 0.7; }
+    20% { opacity: 1; }
+    30% { opacity: 0.8; }
+    40% { opacity: 1; }
+    50% { opacity: 0.9; }
+    60% { opacity: 1; }
+}
+
+.flicker {
+    animation: neonFlicker 0.5s ease-in-out;
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Disco mode - easter egg */
+.disco-mode {
+    animation: discoColors 0.3s infinite;
+}
+
+@keyframes discoColors {
+    0% { filter: hue-rotate(0deg); }
+    25% { filter: hue-rotate(90deg); }
+    50% { filter: hue-rotate(180deg); }
+    75% { filter: hue-rotate(270deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* Enhanced shift+hover effect */
+.shift-hover {
+    transform: translateY(-8px) scale(1.05) rotate(3deg) !important;
+    box-shadow: 0 0 50px var(--card-shadow) !important;
 }
 
 /* Responsive adjustments - consolidated at end of file */
