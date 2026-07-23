@@ -699,6 +699,29 @@ code {
     margin-top: var(--sp-sm);
 }
 
+.content-card h3 {
+    font-family: var(--font-marker);
+    font-size: 1rem;
+    color: var(--paper);
+    margin-top: var(--sp-md);
+    margin-bottom: 0.4rem;
+    transform: rotate(-0.5deg);
+}
+
+.content-card ul {
+    margin-top: var(--sp-sm);
+    padding-left: 1.3rem;
+    color: var(--dim);
+}
+
+.content-card ul li + li {
+    margin-top: 0.4rem;
+}
+
+.content-card ul li::marker {
+    color: var(--accent, var(--pink));
+}
+
 .page-footnote {
     text-align: center;
     color: var(--dim);
