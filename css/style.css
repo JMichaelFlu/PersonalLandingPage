@@ -370,11 +370,21 @@ code {
 .intro {
     position: relative;
     z-index: 1;
-    max-width: 560px;
+    max-width: 760px;
     margin: 0 auto var(--sp-2xl);
-    padding: 0 var(--sp-lg);
+    padding: var(--sp-lg) var(--sp-xl);
     text-align: center;
     color: var(--dim);
+    background: var(--wall);
+    border: var(--border);
+    border-radius: 235px 18px 255px 20px / 20px 245px 18px 250px;
+    box-shadow: 8px 8px 0 var(--purple),
+        0 0 26px color-mix(in srgb, var(--purple) 40%, transparent);
+    transform: rotate(-0.6deg);
+}
+
+.intro p {
+    color: var(--paper);
 }
 
 /* ---------- link wall (main cards) ---------- */
