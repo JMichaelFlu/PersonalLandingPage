@@ -550,12 +550,17 @@ code {
     transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.social-chip .si,
+.social-chip .si {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+    color: var(--chip);
+    transition: color 0.15s ease;
+}
+
 .social-chip .chip-emoji {
     font-size: 1.5rem;
     line-height: 1;
-    color: var(--chip);
-    transition: color 0.15s ease;
 }
 
 .social-chip span:last-child {
