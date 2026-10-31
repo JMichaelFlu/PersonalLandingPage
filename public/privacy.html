@@ -29,96 +29,87 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Mouse+Memoirs&family=Permanent+Marker&display=swap">
+    <link rel="preload" href="/fonts/tilt-neon.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- floating memphis shapes -->
-    <div class="memphis" aria-hidden="true">
-        <svg class="shape s2" viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="var(--cyan)" stroke-width="9"/></svg>
-        <svg class="shape s4" viewBox="0 0 120 40" fill="none"><path d="M5 20 Q20 2 35 20 T65 20 T95 20 T115 20" stroke="var(--yellow)" stroke-width="6" stroke-linecap="round"/></svg>
-        <svg class="shape s6" viewBox="0 0 60 60"><path d="M30 6 v48 M6 30 h48" stroke="var(--orange)" stroke-width="9" stroke-linecap="round"/></svg>
-        <svg class="shape s7" viewBox="0 0 60 60"><circle cx="14" cy="14" r="6" fill="var(--pink)"/><circle cx="44" cy="20" r="6" fill="var(--cyan)"/><circle cx="24" cy="46" r="6" fill="var(--yellow)"/></svg>
-        <svg class="shape s9" viewBox="0 0 64 52" fill="none"><path d="M8 44 L8 18 L20 30 L32 8 L44 30 L56 18 L56 44 Z" stroke="var(--yellow)" stroke-width="5" stroke-linejoin="round"/><circle cx="8" cy="12" r="3.5" fill="var(--yellow)"/><circle cx="32" cy="4" r="3.5" fill="var(--yellow)"/><circle cx="56" cy="12" r="3.5" fill="var(--yellow)"/></svg>
-        <span class="tag-scrawl t1">NOTHING TO HIDE</span>
-        <span class="wall-tag w2">RECEIPTS</span>
+    <div class="wall page">
+        <header class="page-header">
+            <a class="back-link" href="/">← back to the wall</a>
+            <div class="neon-sign neon-sign--pink">
+                <h1><span class="neon-block neon-block--long">Priv<span class="flicker">a</span>cy</span></h1>
+            </div>
+            <p class="page-stamp">last tagged <time datetime="2026-10-31">October 2026</time></p>
+        </header>
+
+        <div class="hyper" aria-hidden="true">
+            <div class="hyper-strip hyper-strip--thin"></div>
+        </div>
+
+        <main id="main-content">
+            <article class="sheet">
+                <section>
+                    <h2>The Short Version</h2>
+                    <p>This is a one-person linktree, not a business. I don't have accounts, forms, or anything to sell
+                        you. The only things that watch you here are standard analytics — no ad networks, no trackers
+                        hawking your data to third parties.</p>
+                </section>
+
+                <section>
+                    <h2>What Gets Collected</h2>
+                    <h3>Analytics</h3>
+                    <p>This site runs Google Analytics (GA4) to see roughly how many people visit and which pages they
+                        land on. Google sets cookies and collects standard analytics data (pages viewed, approximate
+                        location, device/browser type) under its own <a href="https://policies.google.com/privacy"
+                            target="_blank" rel="noopener">privacy policy</a>.</p>
+                    <h3>The Hit Counter</h3>
+                    <p>The retro odometer on the homepage counts your visits using a number stored in your browser's
+                        <code>localStorage</code>. It never leaves your device and I can't see it — it's just there to
+                        be charming.</p>
+                    <h3>Fonts</h3>
+                    <p>The typefaces are served from this site itself, so loading them doesn't involve anyone else.</p>
+                    <h3>Hosting</h3>
+                    <p>The site is served by <a href="https://www.cloudflare.com/privacypolicy/" target="_blank"
+                            rel="noopener">Cloudflare</a>, which, like any web host, sees your IP address and basic
+                        request details when a page loads.</p>
+                    <h3>Everything Else</h3>
+                    <p>No forms, no newsletter, no accounts, no cookies beyond what Google sets for analytics. If you
+                        email me, that's a regular email — Google (or whoever hosts your inbox) handles it same as any
+                        other.</p>
+                </section>
+
+                <section>
+                    <h2>Cookies</h2>
+                    <p>The analytics cookies mentioned above are the only ones this site sets. You can block or clear
+                        them anytime in your browser settings, or use an extension like <a
+                            href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's
+                            opt-out add-on</a> — the site works exactly the same either way.</p>
+                </section>
+
+                <section>
+                    <h2>Other Sites</h2>
+                    <p>Links here point out to places like the <a href="https://garden.fluharty.link">digital
+                            garden</a>, Goodreads, and various social platforms. Once you click through, you're on their
+                        turf and covered by their privacy policy, not this one.</p>
+                </section>
+
+                <section>
+                    <h2>Questions</h2>
+                    <p>Got a question about any of this? Email me at <a
+                            href="mailto:jacob@fluharty.link">jacob@fluharty.link</a>.</p>
+                </section>
+            </article>
+
+            <p class="page-footnote">This policy covers fluharty.link only. It may change as the site does — check back
+                if you're curious.</p>
+        </main>
+
+        <footer class="page-footer">© <span id="year">2026</span> Jacob Fluharty · <a href="/privacy">Privacy
+                Policy</a></footer>
     </div>
-
-    <header class="page-header">
-        <a class="back-link" href="/">← back to the wall</a>
-        <h1 class="page-title">PRIVACY</h1>
-        <p class="tagline">the fine print, spray-painted onto a wall for you</p>
-    </header>
-
-    <main id="main-content" class="page-main">
-        <p class="updated-stamp">Last tagged: <time datetime="2026-10-31">October 2026</time></p>
-
-        <section class="content-card" style="--accent: var(--pink)">
-            <h2><span aria-hidden="true">🔍</span> The Short Version</h2>
-            <p>This is a one-person linktree, not a business. I don't have accounts, forms, or anything to sell you.
-                The only things that watch you here are standard analytics — no ad networks, no trackers hawking your
-                data to third parties.</p>
-        </section>
-
-        <section class="content-card" style="--accent: var(--cyan)">
-            <h2><span aria-hidden="true">📊</span> What Gets Collected</h2>
-            <h3>Analytics</h3>
-            <p>This site runs Google Analytics (GA4) to see roughly how many people visit and
-                which pages they land on. Google sets cookies and collects standard analytics data (pages viewed,
-                approximate location, device/browser type) under its own <a
-                    href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy policy</a>.</p>
-            <h3>The Hit Counter</h3>
-            <p>The retro odometer on the homepage counts your visits using a number stored in your browser's
-                <code>localStorage</code>. It never leaves your device and I can't see it — it's just there to be
-                charming.</p>
-            <h3>Fonts</h3>
-            <p>The typefaces load from <a href="https://fonts.google.com" target="_blank" rel="noopener">Google
-                    Fonts</a>, so your browser fetches them from Google's servers and Google sees your IP address
-                in the process. No cookies are set for this.</p>
-            <h3>Hosting</h3>
-            <p>The site is served by <a href="https://www.cloudflare.com/privacypolicy/" target="_blank"
-                    rel="noopener">Cloudflare</a>, which, like any web host, sees your IP address and basic request
-                details when a page loads.</p>
-            <h3>Everything Else</h3>
-            <p>No forms, no newsletter, no accounts, no cookies beyond what Google sets for analytics. If you email
-                me, that's a regular email — Google (or whoever hosts your inbox) handles it same as any other.</p>
-        </section>
-
-        <section class="content-card" style="--accent: var(--lime)">
-            <h2><span aria-hidden="true">🍪</span> Cookies</h2>
-            <p>The analytics cookies mentioned above are the only ones this site sets. You can block or clear them
-                anytime in your browser settings, or use an extension like <a
-                    href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's opt-out
-                    add-on</a> — the site works exactly the same either way.</p>
-        </section>
-
-        <section class="content-card" style="--accent: var(--yellow)">
-            <h2><span aria-hidden="true">🔗</span> Other Sites</h2>
-            <p>Links here point out to places like the <a href="https://garden.fluharty.link">digital garden</a>,
-                Goodreads, and various social platforms. Once you click through, you're on their turf and covered by
-                their privacy policy, not this one.</p>
-        </section>
-
-        <section class="content-card" style="--accent: var(--purple)">
-            <h2><span aria-hidden="true">✉️</span> Questions</h2>
-            <p>Got a question about any of this? Email me at <a
-                    href="mailto:jacob@fluharty.link">jacob@fluharty.link</a>.</p>
-        </section>
-
-        <p class="page-footnote">This policy covers fluharty.link only. It may change as the site does — check back
-            if you're curious.</p>
-    </main>
-
-    <footer class="footer">
-        <p class="footer-note">© <span id="year">2026</span> Jacob Fluharty · <a href="/privacy">Privacy Policy</a>
-        </p>
-    </footer>
 
     <script src="/js/main.js"></script>
 </body>

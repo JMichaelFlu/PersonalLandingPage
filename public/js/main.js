@@ -53,8 +53,28 @@
 
     document.addEventListener('click', function (e) {
         // don't splat on interactive elements — let links be links
-        if (e.target.closest('a, button, input, textarea, select, label')) return;
+        if (e.target.closest('a, button, input, textarea, select, label, .hyper-strip')) return;
         makeSplat(e.clientX, e.clientY);
+    });
+
+    /* ---------- hypercolor strips: heat follows your finger ---------- */
+    document.querySelectorAll('.hyper-strip').forEach(function (strip) {
+        function heat(e) {
+            var r = strip.getBoundingClientRect();
+            strip.classList.add('is-hot');
+            strip.style.setProperty('--hx', (e.clientX - r.left) / r.width * 100 + '%');
+            strip.style.setProperty('--hy', (e.clientY - r.top) / r.height * 100 + '%');
+        }
+        function cool() {
+            // the CSS transition drifts the spot back to its resting place
+            strip.classList.remove('is-hot');
+            strip.style.removeProperty('--hx');
+            strip.style.removeProperty('--hy');
+        }
+        strip.addEventListener('pointermove', heat);
+        strip.addEventListener('pointerdown', heat);
+        strip.addEventListener('pointerleave', cool);
+        strip.addEventListener('pointercancel', cool);
     });
 
     /* ---------- party mode ---------- */
