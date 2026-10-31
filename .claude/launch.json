@@ -3,11 +3,8 @@
   "configurations": [
     {
       "name": "site",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": [
-        "-c",
-        "cd /Users/jflu/Documents/GitHub/personal-site && exec python3 -m http.server 4173"
-      ],
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["scripts/serve.py"],
       "port": 4173
     }
   ]
