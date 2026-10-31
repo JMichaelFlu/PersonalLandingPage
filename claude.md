@@ -2,18 +2,18 @@
 
 ## Project Overview
 
-Jacob Fluharty's personal site, rebuilt from scratch in July 2026 as a scaled-back, interactive linktree-style home base with a **90s nostalgia aesthetic**: neon signs, spray paint, hip-hop street art, and Memphis-design geometry.
+Jacob Fluharty's personal site: a small front door to the digital garden and the now page, plus his IndieWeb identity (h-card, `rel="me"`). Not a bio page. The look is **Alley Neon**: wheatpaste posters on a concrete wall, hanging neon bar signs, and a Hypercolor strip you can rub.
 
 **Live Site:** https://fluharty.link
-**Digital Garden:** https://garden.fluharty.link (Obsidian-powered, external)
+**Digital Garden:** https://garden.fluharty.link (Obsidian-powered, external; planned move to Quartz with this site's look)
 
 ---
 
 ## Site Structure
 
-1. **index.html** (`/`): graffiti wordmark, intro blurb, 3 link cards (Garden / Now / Colophon), social icon grid, fake retro hit counter. Carries the h-card and JSON-LD Person data.
-2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `updated-stamp` date when editing.
-3. **colophon.html** (`/colophon`): build, look, type, principles, garden pointer.
+1. **index.html** (`/`): neon-sign wordmark, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer with hit counter. Carries the h-card and JSON-LD Person data.
+2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing.
+3. **colophon.html** (`/colophon`): build, look, palette, type, principles, garden pointer.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
 5. **404.html**: served by the host for any missing URL. `noindex`, not in the sitemap. Must exist: without it, Cloudflare Pages serves the homepage for every missing URL.
 
@@ -21,45 +21,49 @@ Clean URLs come from the host (see Hosting). Always link internally as `/now`, n
 
 ---
 
-## Design System
+## Design System: Alley Neon
 
-### Colors (CSS vars in css/style.css :root)
-- Base: `--asphalt #181226` (bg), `--wall #241b3a` (cards), `--ink #0c0914`, `--paper #f5f0e6` (text), `--dim #b9b0c9`
-- Spray cans: `--pink #ff3fa4`, `--cyan #00e5ff`, `--lime #a8ff3e`, `--yellow #ffe94e`, `--orange #ff9f1c`, `--purple #b04dff`
+Two modes share one palette:
+- **The wall** (homepage): loud. Tilted torn posters, tape, stickers, neon.
+- **The page** (now, colophon, privacy, 404, and later the garden): calm. One hanging neon title sign, a thin Hypercolor strip, then a straight paper `.sheet` for reading.
 
-### Type (Google Fonts, one shared URL on every page)
-- **Bungee Shade**: big display titles (section/page titles)
-- **Bungee**: wordmark, buttons, labels
-- **Permanent Marker**: taglines, handwritten accents
-- **Mouse Memoirs**: body copy (single weight, 400 only; requesting other weights breaks the font request)
+### Colors (CSS vars in public/css/style.css :root)
+- Wall: `--concrete #1f1d1b`, `--concrete-hi`, `--concrete-lo`, `--wire #5c5762`, `--shadow #0b0a0a`
+- Paper: `--ink #141210`, `--paper #ece6d6`, `--sheet #f1ece0`, `--paper-dim`, `--paper-rule`, `--muted`, `--tape`
+- Spray + neon: `--poster-lime #c6ff00`, `--pink #ff2e88`, `--pink-deep #a8004a` (links on paper), `--neon-pink #ff3fa4`, `--cyan #00e5ff`, `--neon-lime #a8ff3e`, `--blue #5ad1ff`, `--orange #ff9f1c`, `--yellow #ffe94e` (focus rings)
+- Hypercolor fabric: `--hc-violet`, `--hc-purple`, `--hc-magenta`
 
-### Signature elements
-- Wordmark: green dayglow gradient (chartreuse, lime, neon green, mint) with pink drippy spray underline
-- Halftone-dot + multi-corner dayglow haze background (body background-image stack)
-- Graffiti extras: crown / wildstyle arrow / vinyl / splat SVGs, `.tag-scrawl` marker-font tags, and giant faint `.wall-tag` words in the `.memphis` layer
-- Wordmark has a throw-up outline: `.wordmark::before` (data-text attr, fat paper text-stroke) behind `.wordmark-fill` (gradient clip, z-index 1). Gradient text paints in the background layer, so the fill MUST be an inner span above the pseudo. The pseudo uses `content: attr(data-text) / ""` so screen readers don't read the heading twice.
-- Paint drips: `.drips` strip under the ticker (7 `<i>` drips, staggered grow-in) and drips on the hero underline SVG
-- "HELLO my name is" `.slap` sticker in the hero (wiggles on hover)
-- Cards use uneven border-radius (235px 18px 255px 20px / 20px 245px 18px 250px) for a hand-drawn sticker outline
-- Sticker-style cards: 3px paper border, hard offset `box-shadow` in an accent color, slight rotation that straightens on hover
-- Scrolling ticker banner at top of homepage (pure CSS marquee, duplicated span for seamless loop)
-- Floating Memphis shapes (`.memphis` fixed layer, inline SVGs, `aria-hidden`)
-- Boombox + animated equalizer divider
-- Social icons are inline SVG paths from Simple Icons (CC0), colored with `fill: currentColor`
+### Type (self-hosted in public/fonts, licenses in public/fonts/licenses)
+- **Tilt Neon**: neon tube block letters (signs, badges)
+- **Neonderthaw**: neon tube script ("The Big")
+- **Rubik Dirt**: poster titles and sheet headings. Subset to basic Latin; still ~200 KB because the grit is in the glyphs
+- **Permanent Marker**: kickers, tags, captions
+- **Work Sans** 400 / 400 italic / 600: everything you actually read
+- Rubik Dirt and Neonderthaw are subset with `pyftsubset` to U+0020-007E plus ’ — →. Add characters there if a heading needs them.
 
-## JavaScript (js/main.js, vanilla, IIFE)
-- Spray-splat effect on click (skips interactive elements)
-- Fake hit counter: base 19940 + localStorage visit count, odometer digits, announced as one number
-- Party mode: Konami code or triple-click wordmark. Toggles `.party` on `<html>` (NOT `<body>`: a filter on body re-anchors every fixed layer). Hue-rotate + emoji rain, auto-ends after 12s.
-- Everything guarded by `prefers-reduced-motion`
+### Components
+- `.neon-sign`: hanging sign. Near-white `border` = hot tube core, colored `box-shadow` = glow, `::before`/`::after` = the two wires. `--pink` variant for page titles. Inside: `h1 > .neon-script` / `.neon-block` (`--long` for 8-letter titles so they fit a phone). One letter wrapped in `.flicker`.
+- `.poster` > `.poster-card` (the link, torn via `clip-path`), `.tape`, `.neon-badge`. `clip-path` hides the card's own focus outline, so `.poster:focus-within` draws it.
+- `.hyper` > `.hyper-strip` (`--thin` on pages): heat spot position is `--hx`/`--hy`, registered with `@property` so it drifts back when it cools. Whole block is `aria-hidden`; no text ever sits on the gradient.
+- `.stickers` > `.sticker--pink|paper|blue|orange`. `.sticker-torn` wraps a torn one: drop shadow and focus outline live on the `<li>` because `clip-path` eats them on the link.
+- `.elsewhere`: plain link list with slash separators.
+- `.xerox` (homepage footer), `.page-footer` (subpages).
+- `.page-header` > `.back-link`, `.neon-sign--pink`, `.page-stamp`; then `.sheet` with `section`s.
+
+## JavaScript (public/js/main.js, vanilla, IIFE)
+- Spray-splat effect on click (skips links, buttons, form fields and the Hypercolor strip)
+- Hypercolor strips: pointer sets `--hx`/`--hy`; leaving or cancelling removes them so the CSS transition cools it back
+- Fake hit counter: base 19940 + localStorage visit count, announced as one number
+- Party mode: Konami code or triple-click the neon sign (`#wordmark`). Toggles `.party` on `<html>` (NOT `<body>`: a filter on body re-anchors every fixed layer). Hue-rotate + emoji rain, auto-ends after 12s.
+- Motion (flicker, party, transitions, the cool-down drift) is off under `prefers-reduced-motion`
 
 ---
 
 ## Tech Stack
 - HTML5 / CSS3 / vanilla JS: **no frameworks, no build step**
 - Hosting: Cloudflare Pages (free), Git-connected; build output directory `public`. DNS on Cloudflare.
-- Deploy: merge to `main` and Pages publishes automatically. No upload step.
-- Analytics: GA4 via gtag.js (G-B2JZDMJE9T) on every page. No Tag Manager.
+- Deploy: merge to `main` and Pages publishes automatically. No upload step. Every branch also gets a preview URL.
+- Analytics: GA4 via gtag.js (G-B2JZDMJE9T) on every page. No Tag Manager. No other third-party requests.
 
 ## Hosting
 - Only `public/` is published. Docs, scripts, and editor config stay out of it.
@@ -75,6 +79,7 @@ Clean URLs come from the host (see Hosting). Always link internally as `/now`, n
 │   ├── index.html, now.html, colophon.html, privacy.html, 404.html
 │   ├── css/style.css        # all styles
 │   ├── js/main.js           # all interactions
+│   ├── fonts/               # self-hosted woff2 + licenses/
 │   ├── favicon.svg          # JF tag on asphalt
 │   ├── social-preview.jpg   # 1200x630 OG image
 │   ├── sitemap.xml, robots.txt
@@ -90,19 +95,19 @@ Clean URLs come from the host (see Hosting). Always link internally as `/now`, n
 - ❌ No frameworks, no build tools: keep it plain files
 - ❌ Don't remove accessibility: skip links, `prefers-reduced-motion` guards, semantic markup, focus styles
 - ❌ Don't duplicate digital-garden content here: garden.fluharty.link is the single source of truth for notes/essays
-- ✅ New pages: `public/name.html`, served at `/name`. Copy the head from an existing subpage (gtag snippet, shared font URL, OG tags with absolute canonical), plus the memphis shapes block, `.page-header` pattern, and footer with `/privacy` link. Add it to sitemap.xml.
-- ✅ Emoji in headings go in `<span aria-hidden="true">`
+- ❌ No text on the Hypercolor gradient, no glossy plastic buttons (tried in exploration, rejected)
+- ✅ New pages: `public/name.html`, served at `/name`. Copy the head and the `.wall.page` body skeleton from now.html (gtag snippet, Tilt Neon preload, OG tags with absolute canonical, neon title sign, thin Hypercolor strip, `.sheet`, footer with `/privacy` link). Add it to sitemap.xml.
 - ✅ Keep the voice: unpolished, funny, authentic
 - ✅ Test party mode + reduced motion after touching main.js or animations
 
-## TODO / Known debt (Phase 2 redesign)
-- Font choice; consider self-hosting fonts (faster, and drops the Google Fonts IP disclosure)
-- Contrast: `.footer-hint` is 1.9:1; social chip labels (0.58rem) and footer badge (0.62rem) are too small
-- CSS dedup: sticker radius and accent shadow are repeated three times; `.content-card ul` leaks padding into `.swatches`
-- Animation load on low-end phones (`background-attachment: fixed`, ~15 looping animations)
-- New social preview image, favicon refresh, apple-touch-icon, theme-color
+## TODO / Known debt
+- RSS sticker (`sticker--orange`) goes back in "reach me" once the garden has a feed
+- Garden move to Quartz, styled with this design system
+- New social preview image and favicon in the Alley Neon look; apple-touch-icon, theme-color
+- Optional: custom-drawn SVG neon lettering for the wordmark (real tube bends and gaps)
 
 ## Version History
+- **v4.0** (October 2026): Alley Neon redesign. Wheatpaste posters, hanging neon signs, Hypercolor strip; self-hosted fonts; ticker, Memphis shapes and social icons retired
 - **v3.2** (October 2026): moved to Cloudflare Pages; site files now live in `public/`
 - **v3.1** (October 2026): fixes pass. Clean URLs via .htaccess, 404 page, inline SVG icons, GTM removed, font and OG image fixes, a11y and party-mode bug fixes, IndieWeb h-card + rel="me"
 - **v3.0** (July 2026): full teardown/rebuild: 90s street-art aesthetic, linktree homepage

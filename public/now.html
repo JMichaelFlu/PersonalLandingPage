@@ -29,70 +29,63 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Mouse+Memoirs&family=Permanent+Marker&display=swap">
+    <link rel="preload" href="/fonts/tilt-neon.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- floating memphis shapes -->
-    <div class="memphis" aria-hidden="true">
-        <svg class="shape s1" viewBox="0 0 100 30" fill="none"><path d="M2 25 L15 5 L28 25 L41 5 L54 25 L67 5 L80 25 L93 5" stroke="var(--pink)" stroke-width="5" stroke-linecap="round"/></svg>
-        <svg class="shape s3" viewBox="0 0 60 60"><polygon points="30,5 55,52 5,52" fill="var(--lime)"/></svg>
-        <svg class="shape s4" viewBox="0 0 120 40" fill="none"><path d="M5 20 Q20 2 35 20 T65 20 T95 20 T115 20" stroke="var(--yellow)" stroke-width="6" stroke-linecap="round"/></svg>
-        <svg class="shape s6" viewBox="0 0 60 60"><path d="M30 6 v48 M6 30 h48" stroke="var(--orange)" stroke-width="9" stroke-linecap="round"/></svg>
-        <svg class="shape s7" viewBox="0 0 60 60"><circle cx="14" cy="14" r="6" fill="var(--pink)"/><circle cx="44" cy="20" r="6" fill="var(--cyan)"/><circle cx="24" cy="46" r="6" fill="var(--yellow)"/></svg>
-        <svg class="shape s9" viewBox="0 0 64 52" fill="none"><path d="M8 44 L8 18 L20 30 L32 8 L44 30 L56 18 L56 44 Z" stroke="var(--yellow)" stroke-width="5" stroke-linejoin="round"/><circle cx="8" cy="12" r="3.5" fill="var(--yellow)"/><circle cx="32" cy="4" r="3.5" fill="var(--yellow)"/><circle cx="56" cy="12" r="3.5" fill="var(--yellow)"/></svg>
-        <span class="tag-scrawl t2">carpe diem, eventually</span>
-        <span class="wall-tag w1">RIGHT NOW</span>
+    <div class="wall page">
+        <header class="page-header">
+            <a class="back-link" href="/">← back to the wall</a>
+            <div class="neon-sign neon-sign--pink">
+                <h1><span class="neon-block">N<span class="flicker">o</span>w</span></h1>
+            </div>
+            <p class="page-stamp">last updated <time datetime="2026-07-22">July 2026</time></p>
+        </header>
+
+        <div class="hyper" aria-hidden="true">
+            <div class="hyper-strip hyper-strip--thin"></div>
+        </div>
+
+        <main id="main-content">
+            <article class="sheet">
+                <section>
+                    <h2>Life</h2>
+                    <ul>
+                        <li>Rebuilding this website from the ground up with a heavy dose of 90s nostalgia. Simplifying,
+                            scaling back, and keeping only what matters. Moving slow on purpose.</li>
+                        <li>Getting ready to move to West Virginia. Goodbye beaches, hello Appalachia. Time for a new
+                            adventure.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Reading</h2>
+                    <p>Nothing active at the moment.</p>
+                </section>
+
+                <section>
+                    <h2>Listening</h2>
+                    <p>Passiontide, the new album from <a href="https://www.stephaniesmittle.com">Stephanie Smittle</a>.
+                        Seriously one of the most evocative and beautiful albums I've heard in a long time.</p>
+                </section>
+
+                <section>
+                    <h2>Working On</h2>
+                    <p>Tending the <a href="https://garden.fluharty.link">digital garden</a> — planting notes, pulling
+                        weeds, learning in public.</p>
+                </section>
+            </article>
+
+            <p class="page-footnote">This is a <a href="https://nownownow.com/about">now page</a>. If you have your own
+                site, you should make one too.</p>
+        </main>
+
+        <footer class="page-footer">© <span id="year">2026</span> Jacob Fluharty · <a href="/privacy">Privacy
+                Policy</a></footer>
     </div>
-
-    <header class="page-header">
-        <a class="back-link" href="/">← back to the wall</a>
-        <h1 class="page-title">NOW</h1>
-        <p class="tagline">My current activities, thoughts, and projects, updated whenever life changes gears.</p>
-    </header>
-
-    <main id="main-content" class="page-main">
-        <p class="updated-stamp">Last updated: <time datetime="2026-07-22">July 2026</time></p>
-
-        <section class="content-card" style="--accent: var(--pink)">
-            <h2><span aria-hidden="true">📍</span> Life</h2>
-            <ul>
-                <li>Rebuilding this website from the ground up with a heavy dose of 90s nostalgia. Simplifying,
-                    scaling back, and keeping only what matters. Moving slow on purpose.</li>
-                <li>Getting ready to move to West Virginia. Goodbye beaches, hello Appalachia. Time for a new
-                    adventure.</li>
-            </ul>
-        </section>
-
-        <section class="content-card" style="--accent: var(--cyan)">
-            <h2><span aria-hidden="true">📚</span> Reading</h2>
-            <p>Nothing active at the moment.</p>
-        </section>
-
-        <section class="content-card" style="--accent: var(--lime)">
-            <h2><span aria-hidden="true">🎧</span> Listening</h2>
-            <p>Passiontide, the new album from <a href="https://www.stephaniesmittle.com">Stephanie Smittle</a>. Seriously one of the most evocative and beautiful albums I've heard in a long time.</p>
-        </section>
-
-        <section class="content-card" style="--accent: var(--yellow)">
-            <h2><span aria-hidden="true">🔨</span> Working On</h2>
-            <p>Tending the <a href="https://garden.fluharty.link">digital garden</a> — planting notes, pulling
-                weeds, learning in public.</p>
-        </section>
-
-        <p class="page-footnote">This is a <a href="https://nownownow.com/about">now page</a>. If you have your own
-            site, you should make one too.</p>
-    </main>
-
-    <footer class="footer">
-        <p class="footer-note">© <span id="year">2026</span> Jacob Fluharty · <a href="/privacy">Privacy Policy</a></p>
-    </footer>
 
     <script src="/js/main.js"></script>
 </body>
