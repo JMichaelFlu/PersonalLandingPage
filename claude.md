@@ -15,9 +15,9 @@ Jacob Fluharty's personal site, rebuilt from scratch in July 2026 as a scaled-ba
 2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `updated-stamp` date when editing.
 3. **colophon.html** (`/colophon`): build, look, type, principles, garden pointer.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
-5. **404.html**: served by `.htaccess` for any missing URL. `noindex`, not in the sitemap.
+5. **404.html**: served by the host for any missing URL. `noindex`, not in the sitemap. Must exist: without it, Cloudflare Pages serves the homepage for every missing URL.
 
-Clean URLs come from `.htaccess` (see Hosting). Always link internally as `/now`, never `/now.html` or `https://fluharty.link/now`.
+Clean URLs come from the host (see Hosting). Always link internally as `/now`, never `/now.html` or `https://fluharty.link/now`.
 
 ---
 
@@ -57,28 +57,31 @@ Clean URLs come from `.htaccess` (see Hosting). Always link internally as `/now`
 
 ## Tech Stack
 - HTML5 / CSS3 / vanilla JS: **no frameworks, no build step**
-- Hosting: NixiHost shared hosting (cPanel). DNS on Cloudflare.
-- Deploy: manual upload through cPanel (see README for the file list)
+- Hosting: Cloudflare Pages (free), Git-connected; build output directory `public`. DNS on Cloudflare.
+- Deploy: merge to `main` and Pages publishes automatically. No upload step.
 - Analytics: GA4 via gtag.js (G-B2JZDMJE9T) on every page. No Tag Manager.
 
-## Hosting (.htaccess)
-- `/page` serves `page.html`; `/page.html` and `/page/` 301 to `/page`; `/index.html` 301s to `/`
-- `ErrorDocument 404 /404.html`, directory listings off
-- Blocks repo-only files if they get uploaded: `.git`, `.claude`, `*.md`, `*.py`
-- Tested on Apache 2.4. Local preview: `python3 scripts/serve.py` mirrors the clean-URL and 404 behavior.
+## Hosting
+- Only `public/` is published. Docs, scripts, and editor config stay out of it.
+- Cloudflare Pages: `/page` serves `page.html`, `/page.html` redirects to `/page`, missing URLs get `404.html` with a 404 status.
+- `public/.htaccess` does the same on cPanel and only matters while NixiHost is a fallback. Delete it once NixiHost is retired.
+- Local preview: `python3 scripts/serve.py` serves `public/` with the same clean-URL and 404 behavior.
+- Email (Proton MX/SPF/DKIM/DMARC) and the Bluesky `_atproto` record live in Cloudflare DNS and are independent of web hosting. Never touch them when moving sites.
 
 ## File Structure
 ```
 /
-├── index.html, now.html, colophon.html, privacy.html, 404.html
-├── css/style.css        # all styles
-├── js/main.js           # all interactions
-├── favicon.svg          # JF tag on asphalt
-├── social-preview.jpg   # 1200x630 OG image
-├── sitemap.xml, robots.txt
-├── .htaccess            # clean URLs + 404 (must be uploaded)
-├── scripts/serve.py     # local preview server (not deployed)
-└── claude.md            # this file (not deployed)
+├── public/                  # the published site, nothing else
+│   ├── index.html, now.html, colophon.html, privacy.html, 404.html
+│   ├── css/style.css        # all styles
+│   ├── js/main.js           # all interactions
+│   ├── favicon.svg          # JF tag on asphalt
+│   ├── social-preview.jpg   # 1200x630 OG image
+│   ├── sitemap.xml, robots.txt
+│   └── .htaccess            # cPanel-only fallback; Pages ignores it
+├── scripts/serve.py         # local preview server
+├── README.md                # local preview + deploy settings
+└── claude.md                # this file
 ```
 
 ---
@@ -87,7 +90,7 @@ Clean URLs come from `.htaccess` (see Hosting). Always link internally as `/now`
 - ❌ No frameworks, no build tools: keep it plain files
 - ❌ Don't remove accessibility: skip links, `prefers-reduced-motion` guards, semantic markup, focus styles
 - ❌ Don't duplicate digital-garden content here: garden.fluharty.link is the single source of truth for notes/essays
-- ✅ New pages: root-level `name.html`, served at `/name`. Copy the head from an existing subpage (gtag snippet, shared font URL, OG tags with absolute canonical), plus the memphis shapes block, `.page-header` pattern, and footer with `/privacy` link. Add it to sitemap.xml.
+- ✅ New pages: `public/name.html`, served at `/name`. Copy the head from an existing subpage (gtag snippet, shared font URL, OG tags with absolute canonical), plus the memphis shapes block, `.page-header` pattern, and footer with `/privacy` link. Add it to sitemap.xml.
 - ✅ Emoji in headings go in `<span aria-hidden="true">`
 - ✅ Keep the voice: unpolished, funny, authentic
 - ✅ Test party mode + reduced motion after touching main.js or animations
@@ -100,6 +103,7 @@ Clean URLs come from `.htaccess` (see Hosting). Always link internally as `/now`
 - New social preview image, favicon refresh, apple-touch-icon, theme-color
 
 ## Version History
+- **v3.2** (October 2026): moved to Cloudflare Pages; site files now live in `public/`
 - **v3.1** (October 2026): fixes pass. Clean URLs via .htaccess, 404 page, inline SVG icons, GTM removed, font and OG image fixes, a11y and party-mode bug fixes, IndieWeb h-card + rel="me"
 - **v3.0** (July 2026): full teardown/rebuild: 90s street-art aesthetic, linktree homepage
 - **v2.0** (Jan 2026): neon dive bar, 5 pages

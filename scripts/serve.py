@@ -1,8 +1,8 @@
-"""Local preview server that mirrors .htaccess: /now serves now.html, misses get 404.html."""
+"""Local preview server that mirrors the host: /now serves now.html, misses get 404.html."""
 import http.server
 import os
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'public')
 PORT = 4173
 
 

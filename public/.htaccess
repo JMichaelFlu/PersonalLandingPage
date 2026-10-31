@@ -1,4 +1,6 @@
-# fluharty.link server config (cPanel / Apache or LiteSpeed)
+# fluharty.link server config for cPanel (Apache or LiteSpeed).
+# Only used while the site is still on NixiHost; Cloudflare Pages ignores
+# this file and does the same clean-URL and 404 handling on its own.
 # Clean URLs: /now serves now.html, and old /now.html links 301 to /now.
 
 Options -Indexes

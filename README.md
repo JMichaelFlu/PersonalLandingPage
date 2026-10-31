@@ -2,23 +2,32 @@
 
 The code for my personal landing page, [fluharty.link](https://fluharty.link). Plain HTML, CSS, and JavaScript with no build step. See `claude.md` for the design system and conventions.
 
+Everything the public sees lives in `public/`. Everything else (docs, scripts, editor config) stays in the repo and is never served.
+
 ## Local preview
 
 ```bash
 python3 scripts/serve.py
 ```
 
-Then open http://localhost:4173. The script mirrors the server's clean URLs (`/now` serves `now.html`) and 404 page.
+Then open http://localhost:4173. The script serves `public/` with the same clean URLs (`/now` serves `now.html`) and 404 page as the live host.
 
-## Deploy (cPanel)
+## Deploy
 
-Upload these to the site root:
+Hosted on Cloudflare Pages, connected to this GitHub repo. Merging to `main` deploys automatically; there is no upload step.
 
-- `index.html`, `now.html`, `colophon.html`, `privacy.html`, `404.html`
-- `css/`, `js/`
-- `favicon.svg`, `social-preview.jpg`, `sitemap.xml`, `robots.txt`
-- `.htaccess` (hidden file: in cPanel File Manager, open Settings and tick "Show Hidden Files")
+Pages project settings, for reference if it ever needs rebuilding:
 
-Leave out `README.md`, `claude.md`, `scripts/`, `.claude/`, and `.git/`. The server blocks them if they do get uploaded.
+| Setting | Value |
+|---|---|
+| Production branch | `main` |
+| Framework preset | None |
+| Build command | *(blank)* |
+| Build output directory | `public` |
+| Custom domains | `fluharty.link`, `www.fluharty.link` |
 
-Without `.htaccess`, `/now`, `/colophon`, and `/privacy` return 404.
+Pages handles clean URLs and `404.html` on its own. Keep `404.html` in `public/`: without it, Pages serves the homepage for every missing URL.
+
+### Fallback: cPanel
+
+Until NixiHost is retired, the site can still be uploaded by hand: copy the **contents** of `public/` to the site root, including the hidden `.htaccess` (in cPanel File Manager, open Settings and tick "Show Hidden Files"). Without `.htaccess`, `/now`, `/colophon`, and `/privacy` return 404 on cPanel.
