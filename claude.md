@@ -1,4 +1,4 @@
-# Bearly In a Hurry: Personal Website Documentation
+# Personal Website Documentation
 
 ## Project Overview
 
