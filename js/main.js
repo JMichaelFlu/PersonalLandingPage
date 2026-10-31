@@ -19,7 +19,7 @@
             localStorage.setItem('flu-visits', String(visits));
         } catch (e) { /* private browsing: counter stays at base */ }
         var digits = String(BASE + visits).padStart(7, '0');
-        counterEl.innerHTML = '';
+        counterEl.setAttribute('aria-label', 'visitor number ' + (BASE + visits));
         digits.split('').forEach(function (d) {
             var b = document.createElement('b');
             b.textContent = d;
@@ -60,6 +60,7 @@
     /* ---------- party mode ---------- */
     var PARTY_EMOJI = ['🎨', '📻', '💾', '📼', '✨', '🧢', '🛹', '💿'];
     var partyTimer = null;
+    var partyEnd = null;
 
     function dropEmoji() {
         var drop = document.createElement('span');
@@ -73,16 +74,15 @@
 
     function toggleParty() {
         if (reducedMotion) return;
-        var on = document.body.classList.toggle('party');
+        var on = document.documentElement.classList.toggle('party');
         if (on) {
             partyTimer = setInterval(dropEmoji, 220);
-            setTimeout(function () {
-                // parties that never end are just chores
-                if (document.body.classList.contains('party')) toggleParty();
-            }, 12000);
+            // parties that never end are just chores
+            partyEnd = setTimeout(toggleParty, 12000);
         } else {
             clearInterval(partyTimer);
-            partyTimer = null;
+            clearTimeout(partyEnd);
+            partyTimer = partyEnd = null;
         }
     }
 
@@ -91,7 +91,9 @@
         'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     var keyBuffer = [];
     document.addEventListener('keydown', function (e) {
-        keyBuffer.push(e.key);
+        // ignore bare modifiers (Shift, CapsLock...) so B/A work in any case
+        if (e.key.length > 1 && e.key.indexOf('Arrow') !== 0) return;
+        keyBuffer.push(e.key.length === 1 ? e.key.toLowerCase() : e.key);
         if (keyBuffer.length > KONAMI.length) keyBuffer.shift();
         if (keyBuffer.join(',') === KONAMI.join(',')) {
             keyBuffer = [];

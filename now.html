@@ -2,16 +2,8 @@
 <html lang="en">
 
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KJJ5MTKM');</script>
-    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2JZDMJE9T"></script>
     <script>
@@ -20,9 +12,6 @@
         gtag('js', new Date());
         gtag('config', 'G-B2JZDMJE9T');
     </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Now — Jacob Fluharty</title>
     <meta name="description"
         content="What Jacob Fluharty is doing, reading, and obsessing over right now. A now page, updated whenever life changes gears.">
@@ -33,24 +22,21 @@
     <meta property="og:description" content="What Jacob is doing, reading, and obsessing over right now.">
     <meta property="og:url" content="https://fluharty.link/now">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://fluharty.link/assets/social-preview.png">
+    <meta property="og:image" content="https://fluharty.link/social-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Jacob Fluharty standing in front of a graffiti wall with a boombox">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Permanent+Marker&family=Space+Grotesk:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Mouse+Memoirs&family=Permanent+Marker&display=swap">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJJ5MTKM" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <!-- floating memphis shapes -->
@@ -75,24 +61,27 @@
         <p class="updated-stamp">Last updated: <time datetime="2026-07-22">July 2026</time></p>
 
         <section class="content-card" style="--accent: var(--pink)">
-            <h2>📍 Life</h2>
-            <p> - Rebuilding this website from the ground up with a heavy dose of 90s nostalgia. Simplifying,
-                scaling back, and keeping only what matters. Moving slow on purpose.</p>
-        <p>- Getting ready to move to West Virginia. Goodbye beaches, hello Appalachia. Time for a new adventure.</p>
-            </section>
+            <h2><span aria-hidden="true">📍</span> Life</h2>
+            <ul>
+                <li>Rebuilding this website from the ground up with a heavy dose of 90s nostalgia. Simplifying,
+                    scaling back, and keeping only what matters. Moving slow on purpose.</li>
+                <li>Getting ready to move to West Virginia. Goodbye beaches, hello Appalachia. Time for a new
+                    adventure.</li>
+            </ul>
+        </section>
 
         <section class="content-card" style="--accent: var(--cyan)">
-            <h2>📚 Reading</h2>
+            <h2><span aria-hidden="true">📚</span> Reading</h2>
             <p>Nothing active at the moment.</p>
         </section>
 
         <section class="content-card" style="--accent: var(--lime)">
-            <h2>🎧 Listening</h2>
-            <p>Passiontide, the new album from <a href="https://www.stephaniesmittle.com">Stephanie Smittle</a> . Seriously one of the most evocative and beautiful albums I've heard in a long time.</p>
+            <h2><span aria-hidden="true">🎧</span> Listening</h2>
+            <p>Passiontide, the new album from <a href="https://www.stephaniesmittle.com">Stephanie Smittle</a>. Seriously one of the most evocative and beautiful albums I've heard in a long time.</p>
         </section>
 
         <section class="content-card" style="--accent: var(--yellow)">
-            <h2>🔨 Working On</h2>
+            <h2><span aria-hidden="true">🔨</span> Working On</h2>
             <p>Tending the <a href="https://garden.fluharty.link">digital garden</a> — planting notes, pulling
                 weeds, learning in public.</p>
         </section>
@@ -102,8 +91,7 @@
     </main>
 
     <footer class="footer">
-        <p class="footer-note">© <span id="year">2026</span> Jacob Fluharty · <a href="https://fluharty.link/privacy.html">Privacy Policy</a></p>
-        </p>
+        <p class="footer-note">© <span id="year">2026</span> Jacob Fluharty · <a href="/privacy">Privacy Policy</a></p>
     </footer>
 
     <script src="/js/main.js"></script>
