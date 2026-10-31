@@ -279,6 +279,7 @@ code {
 /* throw-up style fat outline behind the letters */
 .wordmark::before {
     content: attr(data-text);
+    content: attr(data-text) / ""; /* decorative: keep it out of the heading's accessible name */
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -370,7 +371,7 @@ code {
 .intro {
     position: relative;
     z-index: 1;
-    max-width: 760px;
+    max-width: min(760px, calc(100% - 2 * var(--sp-lg)));
     margin: 0 auto var(--sp-2xl);
     padding: var(--sp-lg) var(--sp-xl);
     text-align: center;
@@ -385,6 +386,10 @@ code {
 
 .intro p {
     color: var(--paper);
+}
+
+.intro p + p {
+    margin-top: var(--sp-md);
 }
 
 /* ---------- link wall (main cards) ---------- */
@@ -780,7 +785,8 @@ code {
 }
 
 /* ---------- party mode (konami / triple-click) ---------- */
-body.party {
+/* filter lives on <html>: on <body> it would re-anchor every position: fixed layer */
+html.party {
     animation: party-bg 1.6s linear infinite;
 }
 
@@ -789,7 +795,7 @@ body.party {
     100% { filter: hue-rotate(360deg); }
 }
 
-body.party .wordmark {
+html.party .wordmark {
     animation: party-shake 0.35s ease-in-out infinite;
 }
 
@@ -842,8 +848,8 @@ body.party .wordmark {
     .drips i,
     .slap:hover,
     .spray-underline path,
-    body.party,
-    body.party .wordmark {
+    html.party,
+    html.party .wordmark {
         animation: none;
     }
 
