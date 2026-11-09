@@ -11,7 +11,7 @@ Jacob Fluharty's personal site: a small front door to the digital garden and the
 
 ## Site Structure
 
-1. **index.html** (`/`): neon-sign wordmark, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer with hit counter. Carries the h-card and JSON-LD Person data.
+1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer with hit counter. Carries the h-card and JSON-LD Person data.
 2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing.
 3. **colophon.html** (`/colophon`): build, look, palette, type, principles, garden pointer.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
@@ -35,7 +35,7 @@ Two modes share one palette:
 
 ### Type (self-hosted in public/fonts, licenses in public/fonts/licenses)
 - **Tilt Neon**: neon tube block letters (signs, badges)
-- **Neonderthaw**: neon tube script ("The Big")
+- **Neonderthaw**: neon tube script ("Fluharty")
 - **Rubik Dirt**: poster titles and sheet headings. Subset to basic Latin; still ~200 KB because the grit is in the glyphs
 - **Permanent Marker**: kickers, tags, captions
 - **Work Sans** 400 / 400 italic / 600: everything you actually read
@@ -80,7 +80,8 @@ Two modes share one palette:
 │   ├── css/style.css        # all styles
 │   ├── js/main.js           # all interactions
 │   ├── fonts/               # self-hosted woff2 + licenses/
-│   ├── favicon.svg          # JF tag on asphalt
+│   ├── favicon.svg          # lime neon bear on a cyan neon sign (bold, built for 16 px)
+│   ├── apple-touch-icon.png # 180x180 detailed bear for phone home screens
 │   ├── social-preview.jpg   # 1200x630 OG image
 │   ├── sitemap.xml, robots.txt
 │   └── .htaccess            # cPanel-only fallback; Pages ignores it
@@ -103,10 +104,11 @@ Two modes share one palette:
 ## TODO / Known debt
 - RSS sticker (`sticker--orange`) goes back in "reach me" once the garden has a feed
 - Garden move to Quartz, styled with this design system
-- New social preview image and favicon in the Alley Neon look; apple-touch-icon, theme-color
+- New social preview image in the Alley Neon look
 - Optional: custom-drawn SVG neon lettering for the wordmark (real tube bends and gaps)
 
 ## Version History
+- **v4.1** (November 2026): sign reads "Fluharty Alley"; lime neon bear favicon (the online mascot), apple-touch-icon, theme-color
 - **v4.0** (October 2026): Alley Neon redesign. Wheatpaste posters, hanging neon signs, Hypercolor strip; self-hosted fonts; ticker, Memphis shapes and social icons retired
 - **v3.2** (October 2026): moved to Cloudflare Pages; site files now live in `public/`
 - **v3.1** (October 2026): fixes pass. Clean URLs via .htaccess, 404 page, inline SVG icons, GTM removed, font and OG image fixes, a11y and party-mode bug fixes, IndieWeb h-card + rel="me"
