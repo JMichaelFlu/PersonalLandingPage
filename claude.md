@@ -13,7 +13,7 @@ Jacob Fluharty's personal site: a small front door to the digital garden and the
 
 1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer. Carries the h-card and JSON-LD Person data.
 2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing.
-3. **colophon.html** (`/colophon`): build, look, palette, type, principles, garden pointer.
+3. **colophon.html** (`/colophon`): stack, hosting, AI help, look, palette, type + licenses, privacy, accessibility, page weight, IndieWeb bits, changelog. Update its changelog and `page-stamp` date with every version below, and re-check facts there whenever hosting, fonts, analytics, or page weight change.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
 5. **404.html**: served by the host for any missing URL. `noindex`, not in the sitemap. Must exist: without it, Cloudflare Pages serves the homepage for every missing URL.
 
@@ -49,7 +49,7 @@ Two modes share one palette:
 - `.elsewhere`: plain link list with slash separators.
 - `.xerox` (homepage footer), `.page-footer` (subpages).
 - `.page-header` > `.back-link`, `.neon-sign--pink`, `.page-stamp`; then `.sheet` with `section`s.
-- `.notes` > `section.note` (now page only): each section is its own torn wheatpaste note. The paper is `::before` (torn with `clip-path`) and the tape is `::after`, so the tear never clips the tape. Colors and tilt cycle every four notes (paper, lime, sheet, blue); links on blue notes are ink because pink-deep is too dim there.
+- `.notes` > `section.note` (now page only): each section is its own torn wheatpaste note. The paper is `::before` (torn with `clip-path`) and the tape is `::after`, so the tear never clips the tape. All notes are light paper (paper/sheet alternating) with ink text; the color is the tape, cycling lime, pink, cyan, orange. Saturated backgrounds behind long reading text were tried and rejected.
 
 ### Responsive layout
 Mobile first: one narrow column. Breakpoints at the end of style.css:
@@ -123,6 +123,7 @@ Mobile first: one narrow column. Breakpoints at the end of style.css:
 - Optional: custom-drawn SVG neon lettering for the wordmark (real tube bends and gaps)
 
 ## Version History
+- **v4.4** (November 2026): now page notes all light paper with colored tape; colophon rewritten (hosting, AI help, font licenses, privacy, skip-link hint, weight, IndieWeb, changelog)
 - **v4.3** (November 2026): desktop layout (wider wall, side-by-side posters, two-column now page); now page sections are separate torn-paper notes
 - **v4.2** (November 2026): Google fully removed (incl. Cloudflare's Google tag gateway), cookie-free Cloudflare Web Analytics on both sites, privacy policy covers the whole alley, hit counter rebuilt on real Cloudflare totals (nothing stored in the browser)
 - **v4.1** (November 2026): sign reads "Fluharty Alley"; lime neon bear favicon (the online mascot), apple-touch-icon, theme-color

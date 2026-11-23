@@ -680,30 +680,33 @@ code {
     left: var(--tape-x, 26px);
     width: 92px;
     height: 26px;
-    background: var(--tape);
+    /* colored masking tape: the only color on the notes, so the reading stays on calm paper */
+    background: color-mix(in srgb, var(--tape-color, var(--poster-lime)) 70%, transparent);
     transform: rotate(var(--tape-tilt, -8deg));
     pointer-events: none;
 }
 
 .note:nth-child(4n + 2) {
-    --note-bg: var(--poster-lime);
+    --note-bg: var(--sheet);
     --note-tear: var(--torn-b);
     --note-tilt: 0.9deg;
+    --tape-color: var(--pink);
     --tape-x: calc(50% - 46px);
     --tape-tilt: 3deg;
 }
 
 .note:nth-child(4n + 3) {
     --note-tilt: 0.6deg;
-    --note-bg: var(--sheet);
     --note-tear: var(--torn-b);
+    --tape-color: var(--cyan);
     --tape-x: calc(100% - 118px);
     --tape-tilt: 7deg;
 }
 
 .note:nth-child(4n + 4) {
-    --note-bg: var(--blue);
+    --note-bg: var(--sheet);
     --note-tilt: -0.7deg;
+    --tape-color: var(--orange);
     --tape-x: 40px;
     --tape-tilt: -4deg;
 }
@@ -725,9 +728,6 @@ code {
 
 .note a { color: var(--pink-deep); }
 .note a:hover { color: var(--ink); }
-/* pink-deep is too dim on blue, so links there are ink */
-.note:nth-child(4n + 4) a { color: var(--ink); }
-.note:nth-child(4n + 4) a:hover { color: var(--pink-deep); }
 
 /* colophon swatches */
 .sheet .swatches {

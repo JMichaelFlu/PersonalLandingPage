@@ -36,7 +36,7 @@
             <div class="neon-sign neon-sign--pink">
                 <h1><span class="neon-block neon-block--long">Colo<span class="flicker">p</span>hon</span></h1>
             </div>
-            <p class="page-stamp">the how, the flair, the nuts and bolts</p>
+            <p class="page-stamp">the how, the flair, the nuts and bolts<br>last updated <time datetime="2026-11-23">2026/11/23</time></p>
         </header>
 
         <div class="hyper" aria-hidden="true">
@@ -47,9 +47,25 @@
             <article class="sheet">
                 <section>
                     <h2>The Bones</h2>
-                    <p>HTML5, CSS3, and vanilla JavaScript. The way the old gods intended.</p>
-                    <p>Hosted on Cloudflare Pages, with Cloudflare running the DNS and backend operations. <a
-                            href="https://claude.com/claude-code">Claude Code</a> helped me assemble the code.</p>
+                    <p>HTML5, CSS3, and vanilla JavaScript, written by hand. No frameworks, no build step, no npm
+                        install. The way the old gods intended.</p>
+                    <p>The one bit of server code is a tiny Cloudflare Pages Function that asks Cloudflare how many
+                        visits the alley got in the last 30 days, so the counter on the homepage shows a real number.</p>
+                    <p>The source lives on <a href="https://github.com/JMichaelFlu/PersonalLandingPage">GitHub</a>, if
+                        you want to see how the sausage gets made.</p>
+                </section>
+
+                <section>
+                    <h2>Hosting</h2>
+                    <p>Hosted on <a href="https://pages.cloudflare.com/">Cloudflare Pages</a>, which also runs the DNS.
+                        Merging a change on GitHub publishes it automatically, so there's no FTP and no upload button.
+                        Email runs through <a href="https://proton.me/mail">Proton</a>.</p>
+                </section>
+
+                <section>
+                    <h2>Help From a Robot</h2>
+                    <p><a href="https://claude.com/claude-code">Claude Code</a> helps me write and maintain the code.
+                        The ideas, the opinions, and the questionable taste in 90s nostalgia are all mine.</p>
                 </section>
 
                 <section>
@@ -58,7 +74,7 @@
                         blacktop basketball court, remember the carpet floor in the arcade room of the skating rink, hear
                         the sound of a ghetto blaster somewhere in the distance.</p>
                     <p>The sign over the entrance reads Fluharty Alley, and the lime neon bear in your browser tab is the
-                        house mascot.</p>
+                        house mascot, drawn for this site.</p>
                     <ul class="swatches" aria-label="Color palette">
                         <li><span class="swatch" style="--sw: var(--concrete)"></span> Alley Concrete</li>
                         <li><span class="swatch" style="--sw: var(--paper)"></span> Wheatpaste</li>
@@ -77,22 +93,59 @@
                         <a href="https://fonts.google.com/specimen/Rubik+Dirt">Rubik Dirt</a> for the posters,
                         <a href="https://fonts.google.com/specimen/Permanent+Marker">Permanent Marker</a> for the tags,
                         and <a href="https://fonts.google.com/specimen/Work+Sans">Work Sans</a> for everything you
-                        actually have to read. All served straight from this site.</p>
+                        actually have to read.</p>
+                    <p>All of them are served straight from this site, so loading them doesn't ping anyone else.
+                        Permanent Marker is under the Apache License 2.0; the rest are under the SIL Open Font License.</p>
+                </section>
+
+                <section>
+                    <h2>Privacy</h2>
+                    <p>No ads, no tracking cookies, nothing following you around the internet. Visits are counted with
+                        <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a>, which doesn't
+                        use cookies. The whole story is in the <a href="/privacy">privacy policy</a>.</p>
                 </section>
 
                 <section>
                     <h2>Accessibility</h2>
                     <p>Fun shouldn't cost anyone access. Every animation on this site respects
-                        <code>prefers-reduced-motion</code>, every page has a skip link, and the markup is semantic HTML
-                        underneath all the spray paint.</p>
+                        <code>prefers-reduced-motion</code>, everything works from a keyboard, and the markup is
+                        semantic HTML underneath all the spray paint.</p>
+                    <p>Every page also has a "Skip to content" link for keyboard and screen reader users. It stays
+                        hidden until you need it: press Tab when a page first loads and it pops up in the top corner.</p>
                 </section>
 
                 <section>
-                    <h2>Everything Else</h2>
-                    <p>The living, growing stuff — notes, essays, half-formed ideas — lives in the
+                    <h2>Weight</h2>
+                    <p>Every page, fonts and all, comes in under 400 KB, and about half of that is the grit baked into
+                        Rubik Dirt. No video, no trackers, no megabytes of JavaScript.</p>
+                </section>
+
+                <section>
+                    <h2>IndieWeb Bits</h2>
+                    <p>The homepage carries an <a href="https://indieweb.org/h-card">h-card</a> and
+                        <a href="https://indieweb.org/rel-me"><code>rel="me"</code></a> links, so my profiles elsewhere
+                        can vouch that this domain is really me. The <a href="/now">now page</a> is an idea borrowed
+                        from <a href="https://sive.rs/">Derek Sivers</a>, and this page is a
+                        <a href="https://indieweb.org/colophon">colophon</a>.</p>
+                    <p>The living, growing stuff (notes, essays, half-formed ideas) lives in the
                         <a href="https://garden.fluharty.link">digital garden</a>, powered by
-                        <a href="https://obsidian.md">Obsidian</a>. the <a href="https://fluharty.link/now">Now Page</a>, from the mind of
-                        <a href="https://sive.rs/">Derek Sivers</a> keeps you updated on the big stuff going on, as well as little bits I think are interesting to know.   This site is just the front door.</p>
+                        <a href="https://obsidian.md">Obsidian</a>. This site is just the front door.</p>
+                </section>
+
+                <section>
+                    <h2>Changelog</h2>
+                    <ul>
+                        <li><strong>November 2026:</strong> desktop layout that actually uses the screen, now page
+                            sections as torn paper notes, this colophon rewritten.</li>
+                        <li><strong>November 2026:</strong> Google removed entirely, cookie-free analytics, a privacy
+                            policy for the whole alley, the hit counter rebuilt on real numbers, and the neon bear
+                            mascot moved in.</li>
+                        <li><strong>October 2026:</strong> the Alley Neon redesign: wheatpaste posters, hanging neon
+                            signs, the Hypercolor strip. Moved to Cloudflare Pages.</li>
+                        <li><strong>July 2026:</strong> torn down and rebuilt as a 90s street-art link page.</li>
+                        <li><strong>January 2026:</strong> neon dive bar, five pages.</li>
+                        <li><strong>2025:</strong> the first version goes up.</li>
+                    </ul>
                 </section>
             </article>
         </main>
