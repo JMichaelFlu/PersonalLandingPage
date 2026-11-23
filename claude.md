@@ -71,6 +71,7 @@ Two modes share one palette:
 - `public/.htaccess` does the same on cPanel and only matters while NixiHost is a fallback. Delete it once NixiHost is retired.
 - Local preview: `python3 scripts/serve.py` serves `public/` with the same clean-URL and 404 behavior.
 - Email (Proton MX/SPF/DKIM/DMARC) and the Bluesky `_atproto` record live in Cloudflare DNS and are independent of web hosting. Never touch them when moving sites.
+- Cloudflare adds scripts at its edge that never appear in this repo: bot protection (`/cdn-cgi/challenge-platform`, may set a `cf_clearance` cookie), email obfuscation (`email-decode.min.js`), and Web Analytics. **Google tag gateway must stay off** (it re-injected the old GTM container in November 2026). Audit what visitors really get with a real browser (Playwright), not curl: Cloudflare only injects into browser-like requests.
 
 ## File Structure
 ```
