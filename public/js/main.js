@@ -9,22 +9,26 @@
     var yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    /* ---------- hit counter (localStorage, odometer style) ---------- */
+    /* ---------- hit counter: real totals from Cloudflare Web Analytics, via /api/hits ---------- */
+    // the old counter kept a per-browser count; clear it out (remove this line after mid-2027)
+    try { localStorage.removeItem('flu-visits'); } catch (e) { /* storage blocked: nothing stored either */ }
+
     var counterEl = document.getElementById('hit-counter');
-    if (counterEl) {
-        var BASE = 19940; // every good counter starts somewhere suspicious
-        var visits = 0;
-        try {
-            visits = (parseInt(localStorage.getItem('flu-visits'), 10) || 0) + 1;
-            localStorage.setItem('flu-visits', String(visits));
-        } catch (e) { /* private browsing: counter stays at base */ }
-        var digits = String(BASE + visits).padStart(7, '0');
-        counterEl.setAttribute('aria-label', 'visitor number ' + (BASE + visits));
-        digits.split('').forEach(function (d) {
-            var b = document.createElement('b');
-            b.textContent = d;
-            counterEl.appendChild(b);
-        });
+    if (counterEl && window.fetch) {
+        fetch('/api/hits')
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .then(function (data) {
+                // no number, no counter: never show a made-up one
+                if (!data || typeof data.visits !== 'number' || data.visits < 0) return;
+                counterEl.setAttribute('aria-label', String(data.visits));
+                String(data.visits).padStart(7, '0').split('').forEach(function (d) {
+                    var b = document.createElement('b');
+                    b.textContent = d;
+                    counterEl.appendChild(b);
+                });
+                counterEl.parentNode.hidden = false;
+            })
+            .catch(function () { /* offline or no counter here (local preview, cPanel): stay hidden */ });
     }
 
     /* ---------- spray splat on click ---------- */

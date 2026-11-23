@@ -11,7 +11,7 @@ Jacob Fluharty's personal site: a small front door to the digital garden and the
 
 ## Site Structure
 
-1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer with hit counter. Carries the h-card and JSON-LD Person data.
+1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer. Carries the h-card and JSON-LD Person data.
 2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing.
 3. **colophon.html** (`/colophon`): build, look, palette, type, principles, garden pointer.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
@@ -53,15 +53,22 @@ Two modes share one palette:
 ## JavaScript (public/js/main.js, vanilla, IIFE)
 - Spray-splat effect on click (skips links, buttons, form fields and the Hypercolor strip)
 - Hypercolor strips: pointer sets `--hx`/`--hy`; leaving or cancelling removes them so the CSS transition cools it back
-- Fake hit counter: base 19940 + localStorage visit count, announced as one number
+- Hit counter: fetches `/api/hits` (see Pages Function below) and shows visits in the last 30 days. The `<p class="hit-counter">` stays `hidden` unless a real number comes back, so local preview and cPanel simply don't show it. Never fake a number or a starting offset. The old version (until November 2026) kept a per-browser count in `localStorage`: consent trouble under EU ePrivacy rules, and it only counted your own visits. main.js still deletes that old `flu-visits` key; remove that line (and its sentence in privacy.html) after mid-2027.
 - Party mode: Konami code or triple-click the neon sign (`#wordmark`). Toggles `.party` on `<html>` (NOT `<body>`: a filter on body re-anchors every fixed layer). Hue-rotate + emoji rain, auto-ends after 12s.
 - Motion (flicker, party, transitions, the cool-down drift) is off under `prefers-reduced-motion`
 
 ---
 
+## Pages Function (functions/api/hits.js)
+- The only server code. `GET /api/hits` asks the Cloudflare GraphQL Analytics API (`rumPageloadEventsAdaptiveGroups`, bots excluded) for visits in the last 30 days to fluharty.link, www and the garden, and returns `{ visits, days, asOf }`, cached for an hour. Returns 503 when unconfigured or upstream fails.
+- Counts by hostname (`ALLEY_HOSTS` in the file), not by Web Analytics site: visits have landed under three different site tags over time (zone-wide automatic setup, the Pages switch, the garden plugin). Add a host there if a new subdomain should count. Numbers are Cloudflare's sampled estimates, so at low traffic they move in round steps.
+- Pages compiles `functions/` itself on deploy, even with the build command left blank (confirmed November 2026); there is still no local build.
+- Project variables (Settings → Variables and Secrets, Production and Preview): `CF_ACCOUNT_ID` (plain text) and `CF_ANALYTICS_TOKEN` (secret; API token with only Account Analytics: Read). If the counter vanishes, the token probably expired: `/api/hits` returns 503 and the reason is in the Pages Functions logs.
+- 30 days is a choice, not a limit: Web Analytics allows windows up to about 93 days and keeps about 6 months. An all-time total would need a running sum stored server-side (e.g. KV), never in the browser.
+
 ## Tech Stack
-- HTML5 / CSS3 / vanilla JS: **no frameworks, no build step**
-- Hosting: Cloudflare Pages (free), Git-connected; build output directory `public`. DNS on Cloudflare.
+- HTML5 / CSS3 / vanilla JS: **no frameworks, no build step** (one Pages Function, compiled by Pages)
+- Hosting: Cloudflare Pages (free), Git-connected; build command blank, build output directory `public`. DNS on Cloudflare.
 - Deploy: merge to `main` and Pages publishes automatically. No upload step. Every branch also gets a preview URL.
 - Analytics: Cloudflare Web Analytics (cookie-free), switched on in the Pages project (Workers & Pages → project → Metrics → Web Analytics); Cloudflare adds its script at deploy time, so there is no analytics code in the HTML. The zone-wide "automatic setup" site does not reach Pages or Workers responses (checked live in November 2026), so don't rely on it. garden.fluharty.link counts through its own Web Analytics site and a small plugin in the garden repo. No Google Analytics, no Tag Manager.
 
@@ -86,6 +93,7 @@ Two modes share one palette:
 │   ├── social-preview.jpg   # 1200x630 OG image
 │   ├── sitemap.xml, robots.txt
 │   └── .htaccess            # cPanel-only fallback; Pages ignores it
+├── functions/api/hits.js    # hit counter endpoint (Pages Function, not in public/)
 ├── scripts/serve.py         # local preview server
 ├── README.md                # local preview + deploy settings
 └── claude.md                # this file
@@ -109,6 +117,7 @@ Two modes share one palette:
 - Optional: custom-drawn SVG neon lettering for the wordmark (real tube bends and gaps)
 
 ## Version History
+- **v4.2** (November 2026): Google fully removed (incl. Cloudflare's Google tag gateway), cookie-free Cloudflare Web Analytics on both sites, privacy policy covers the whole alley, hit counter rebuilt on real Cloudflare totals (nothing stored in the browser)
 - **v4.1** (November 2026): sign reads "Fluharty Alley"; lime neon bear favicon (the online mascot), apple-touch-icon, theme-color
 - **v4.0** (October 2026): Alley Neon redesign. Wheatpaste posters, hanging neon signs, Hypercolor strip; self-hosted fonts; ticker, Memphis shapes and social icons retired
 - **v3.2** (October 2026): moved to Cloudflare Pages; site files now live in `public/`

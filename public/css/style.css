@@ -521,6 +521,7 @@ code {
 .xerox a { color: var(--ink); }
 .xerox a:hover { color: var(--pink-deep); }
 
+/* hidden until /api/hits answers with a real number */
 .hit-counter {
     font-family: var(--font-marker);
 }
