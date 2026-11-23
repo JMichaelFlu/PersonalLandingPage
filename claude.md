@@ -61,13 +61,13 @@ Two modes share one palette:
 
 ## Pages Function (functions/api/hits.js)
 - The only server code. `GET /api/hits` asks the Cloudflare GraphQL Analytics API (`rumPageloadEventsAdaptiveGroups`, bots excluded) for visits in the last 30 days and returns `{ visits, days, asOf }`, cached for an hour. Returns 503 when unconfigured or upstream fails.
-- Pages compiles `functions/` itself; there is still no local build. The Pages build command must be `exit 0` (a blank one skips Functions).
+- Pages compiles `functions/` itself on deploy, even with the build command left blank (confirmed November 2026); there is still no local build.
 - Project variables (Settings → Variables and Secrets, Production and Preview): `CF_ACCOUNT_ID`, `CF_SITE_TAGS` (comma-separated Web Analytics site tags: fluharty.link and the garden), `CF_ANALYTICS_TOKEN` (secret; API token with only Account Analytics: Read). A site tag is the `siteTag~in=` value in the Web Analytics dashboard URL for that site.
 - 30 days because free-plan analytics keep about 31 days. An all-time total would need a running sum stored server-side (e.g. KV), never in the browser.
 
 ## Tech Stack
 - HTML5 / CSS3 / vanilla JS: **no frameworks, no build step** (one Pages Function, compiled by Pages)
-- Hosting: Cloudflare Pages (free), Git-connected; build command `exit 0`, build output directory `public`. DNS on Cloudflare.
+- Hosting: Cloudflare Pages (free), Git-connected; build command blank, build output directory `public`. DNS on Cloudflare.
 - Deploy: merge to `main` and Pages publishes automatically. No upload step. Every branch also gets a preview URL.
 - Analytics: Cloudflare Web Analytics (cookie-free), switched on in the Pages project (Workers & Pages → project → Metrics → Web Analytics); Cloudflare adds its script at deploy time, so there is no analytics code in the HTML. The zone-wide "automatic setup" site does not reach Pages or Workers responses (checked live in November 2026), so don't rely on it. garden.fluharty.link counts through its own Web Analytics site and a small plugin in the garden repo. No Google Analytics, no Tag Manager.
 

@@ -22,7 +22,7 @@ Pages project settings, for reference if it ever needs rebuilding:
 |---|---|
 | Production branch | `main` |
 | Framework preset | None |
-| Build command | `exit 0` (needed so Pages compiles `functions/`) |
+| Build command | *(blank; Pages still compiles `functions/`)* |
 | Build output directory | `public` |
 | Custom domains | `fluharty.link`, `www.fluharty.link` |
 | Variables | `CF_ACCOUNT_ID`, `CF_SITE_TAGS`, secret `CF_ANALYTICS_TOKEN` (see `claude.md`, Pages Function) |
