@@ -12,7 +12,7 @@ Jacob Fluharty's personal site: a small front door to the digital garden and the
 ## Site Structure
 
 1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer. Carries the h-card and JSON-LD Person data.
-2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing.
+2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing, and keep the `<time datetime="YYYY-MM-DD">` attribute matching the visible date: search engines (and the planned feed) read the attribute, not the text.
 3. **colophon.html** (`/colophon`): stack, hosting, AI help, look, palette, type + licenses, privacy, accessibility, page weight, IndieWeb bits, changelog. Update its changelog and `page-stamp` date with every version below, and re-check facts there whenever hosting, fonts, analytics, or page weight change.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
 5. **404.html**: served by the host for any missing URL. `noindex`, not in the sitemap. Must exist: without it, Cloudflare Pages serves the homepage for every missing URL.
@@ -102,7 +102,7 @@ Mobile first: one narrow column. Breakpoints at the end of style.css:
 ├── functions/api/hits.js    # hit counter endpoint (Pages Function, not in public/)
 ├── scripts/serve.py         # local preview server
 ├── README.md                # local preview + deploy settings
-└── claude.md                # this file
+└── CLAUDE.md                # this file (Claude Code loads it automatically; keep the caps)
 ```
 
 ---
@@ -116,13 +116,27 @@ Mobile first: one narrow column. Breakpoints at the end of style.css:
 - ✅ Keep the voice: unpolished, funny, authentic
 - ✅ Test party mode + reduced motion after touching main.js or animations
 
-## TODO / Known debt
-- RSS sticker (`sticker--orange`) goes back in "reach me" once the garden has a feed
-- Garden move to Quartz, styled with this design system
-- New social preview image in the Alley Neon look
-- Optional: custom-drawn SVG neon lettering for the wordmark (real tube bends and gaps)
+## Working Across Sessions
+Claude sessions can't see each other. This file is the shared memory for site work.
+- Start of a session: read Roadmap below before proposing anything new.
+- End of a session: record any decision, plan change, or newly opened item in Roadmap (or the relevant section), in the same PR as the work.
+- Jacob's general working rules live in his AI Operating Guide (Google Drive, 02 Areas). Site specifics live here.
+- Finish open items before starting new ones; if something new comes up, add it to Roadmap and ask what it replaces.
+
+## Roadmap
+Status: **next** (agreed, not started), **later** (agreed, waiting on something), **idea** (not decided).
+
+- **next: Now page feed.** Jacob updates /now about weekly, so it gets an Atom feed. Plan: a Pages Function (like `functions/api/hits.js`) reads `now.html` and serves the feed, so there is only one file to edit. One entry per update, its id and date taken from the `page-stamp` `<time datetime>`; feed readers keep the history. Add `<link rel="alternate" type="application/atom+xml">` to the head. Depends on the datetime rule in Site Structure.
+- **next: /links page + webrings.** A blogroll from Jacob's browser bookmarks folder (he exports it, Claude converts it), a wall of 88x31 buttons including our own Alley Neon button, and an OPML file of the blogroll for feed readers. Plus a small prev / random / next webring strip on the homepage near the footer (rings require the widget on the registered page, so a links page alone does not qualify). First ring: IndieWeb webring (sign in with the domain; h-card and rel="me" already exist). Check each ring's current rules before joining.
+- **later: Garden feed.** The garden is the Obsidian Digital Garden plugin: the plugin pushes notes marked for publish to the garden's git repo, and a Cloudflare build generates the site. Jacob also edits some things directly on GitHub. Check whether the garden template already makes a feed before building one; fold it into the Quartz decision. When a garden feed exists, the RSS sticker (`sticker--orange`) goes back in "reach me".
+- **later: Garden move to Quartz**, styled with this design system.
+- **idea: Photo feed.** Each stream gets its own feed later; nothing to design up front.
+- **idea: Start our own webring.** Not before a year of being in others.
+- **idea: New social preview image** in the Alley Neon look.
+- **idea: Custom SVG neon lettering** for the wordmark (real tube bends and gaps).
 
 ## Version History
+- **v4.5** (November 2026): project notes renamed to CLAUDE.md so Claude Code loads them; Roadmap and cross-session rules added; now page datetime fixed
 - **v4.4** (November 2026): now page notes all light paper with colored tape; colophon rewritten (hosting, AI help, font licenses, privacy, skip-link hint, weight, IndieWeb, changelog)
 - **v4.3** (November 2026): desktop layout (wider wall, side-by-side posters, two-column now page); now page sections are separate torn-paper notes
 - **v4.2** (November 2026): Google fully removed (incl. Cloudflare's Google tag gateway), cookie-free Cloudflare Web Analytics on both sites, privacy policy covers the whole alley, hit counter rebuilt on real Cloudflare totals (nothing stored in the browser)
