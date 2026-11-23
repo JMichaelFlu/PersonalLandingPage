@@ -63,7 +63,7 @@ Two modes share one palette:
 - HTML5 / CSS3 / vanilla JS: **no frameworks, no build step**
 - Hosting: Cloudflare Pages (free), Git-connected; build output directory `public`. DNS on Cloudflare.
 - Deploy: merge to `main` and Pages publishes automatically. No upload step. Every branch also gets a preview URL.
-- Analytics: Cloudflare Web Analytics (cookie-free), added for the whole fluharty.link zone with automatic setup, so Cloudflare injects it at the edge on fluharty.link and garden.fluharty.link alike. There is no analytics code in the HTML. Don't also enable it in the Pages project (one beacon per page). No Google Analytics, no Tag Manager.
+- Analytics: Cloudflare Web Analytics (cookie-free), switched on in the Pages project (Workers & Pages → project → Metrics → Web Analytics); Cloudflare adds its script at deploy time, so there is no analytics code in the HTML. The zone-wide "automatic setup" site does not reach Pages or Workers responses (checked live in November 2026), so don't rely on it. garden.fluharty.link counts through its own Web Analytics site and a small plugin in the garden repo. No Google Analytics, no Tag Manager.
 
 ## Hosting
 - Only `public/` is published. Docs, scripts, and editor config stay out of it.
