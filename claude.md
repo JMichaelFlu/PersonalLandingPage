@@ -63,7 +63,7 @@ Two modes share one palette:
 - HTML5 / CSS3 / vanilla JS: **no frameworks, no build step**
 - Hosting: Cloudflare Pages (free), Git-connected; build output directory `public`. DNS on Cloudflare.
 - Deploy: merge to `main` and Pages publishes automatically. No upload step. Every branch also gets a preview URL.
-- Analytics: GA4 via gtag.js (G-B2JZDMJE9T) on every page. No Tag Manager. No other third-party requests.
+- Analytics: Cloudflare Web Analytics (cookie-free), switched on in the Pages project (Metrics → Web Analytics) and injected by Cloudflare at deploy time, so there is no analytics code in the HTML. No Google Analytics, no Tag Manager. garden.fluharty.link is switched on separately (it is its own site).
 
 ## Hosting
 - Only `public/` is published. Docs, scripts, and editor config stay out of it.
@@ -97,7 +97,7 @@ Two modes share one palette:
 - ❌ Don't remove accessibility: skip links, `prefers-reduced-motion` guards, semantic markup, focus styles
 - ❌ Don't duplicate digital-garden content here: garden.fluharty.link is the single source of truth for notes/essays
 - ❌ No text on the Hypercolor gradient, no glossy plastic buttons (tried in exploration, rejected)
-- ✅ New pages: `public/name.html`, served at `/name`. Copy the head and the `.wall.page` body skeleton from now.html (gtag snippet, Tilt Neon preload, OG tags with absolute canonical, neon title sign, thin Hypercolor strip, `.sheet`, footer with `/privacy` link). Add it to sitemap.xml.
+- ✅ New pages: `public/name.html`, served at `/name`. Copy the head and the `.wall.page` body skeleton from now.html (Tilt Neon preload, OG tags with absolute canonical, neon title sign, thin Hypercolor strip, `.sheet`, footer with `/privacy` link). Add it to sitemap.xml.
 - ✅ Keep the voice: unpolished, funny, authentic
 - ✅ Test party mode + reduced motion after touching main.js or animations
 
