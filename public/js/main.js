@@ -9,23 +9,8 @@
     var yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    /* ---------- hit counter (localStorage, odometer style) ---------- */
-    var counterEl = document.getElementById('hit-counter');
-    if (counterEl) {
-        var BASE = 19940; // every good counter starts somewhere suspicious
-        var visits = 0;
-        try {
-            visits = (parseInt(localStorage.getItem('flu-visits'), 10) || 0) + 1;
-            localStorage.setItem('flu-visits', String(visits));
-        } catch (e) { /* private browsing: counter stays at base */ }
-        var digits = String(BASE + visits).padStart(7, '0');
-        counterEl.setAttribute('aria-label', 'visitor number ' + (BASE + visits));
-        digits.split('').forEach(function (d) {
-            var b = document.createElement('b');
-            b.textContent = d;
-            counterEl.appendChild(b);
-        });
-    }
+    /* ---------- retired hit counter: clear the visit count it used to store ---------- */
+    try { localStorage.removeItem('flu-visits'); } catch (e) { /* storage blocked: nothing stored either */ }
 
     /* ---------- spray splat on click ---------- */
     function makeSplat(x, y) {

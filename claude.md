@@ -11,7 +11,7 @@ Jacob Fluharty's personal site: a small front door to the digital garden and the
 
 ## Site Structure
 
-1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer with hit counter. Carries the h-card and JSON-LD Person data.
+1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer. Carries the h-card and JSON-LD Person data.
 2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing.
 3. **colophon.html** (`/colophon`): build, look, palette, type, principles, garden pointer.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
@@ -53,7 +53,7 @@ Two modes share one palette:
 ## JavaScript (public/js/main.js, vanilla, IIFE)
 - Spray-splat effect on click (skips links, buttons, form fields and the Hypercolor strip)
 - Hypercolor strips: pointer sets `--hx`/`--hy`; leaving or cancelling removes them so the CSS transition cools it back
-- Fake hit counter: base 19940 + localStorage visit count, announced as one number
+- Hit counter: retired in November 2026. Storing it on the visitor's device without consent sits badly with EU ePrivacy rules, and a counter that only counts your own visits doesn't do what it claims. main.js now only deletes the old `flu-visits` key; remove that line after mid-2027. If it ever returns, it should show real site-wide totals (e.g. from Cloudflare Web Analytics) with nothing stored in the browser.
 - Party mode: Konami code or triple-click the neon sign (`#wordmark`). Toggles `.party` on `<html>` (NOT `<body>`: a filter on body re-anchors every fixed layer). Hue-rotate + emoji rain, auto-ends after 12s.
 - Motion (flicker, party, transitions, the cool-down drift) is off under `prefers-reduced-motion`
 
@@ -109,6 +109,7 @@ Two modes share one palette:
 - Optional: custom-drawn SVG neon lettering for the wordmark (real tube bends and gaps)
 
 ## Version History
+- **v4.2** (November 2026): Google fully removed (incl. Cloudflare's Google tag gateway), cookie-free Cloudflare Web Analytics on both sites, privacy policy covers the whole alley, hit counter retired
 - **v4.1** (November 2026): sign reads "Fluharty Alley"; lime neon bear favicon (the online mascot), apple-touch-icon, theme-color
 - **v4.0** (October 2026): Alley Neon redesign. Wheatpaste posters, hanging neon signs, Hypercolor strip; self-hosted fonts; ticker, Memphis shapes and social icons retired
 - **v3.2** (October 2026): moved to Cloudflare Pages; site files now live in `public/`
