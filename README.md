@@ -1,6 +1,6 @@
 # personal-site
 
-The code for my personal landing page, [fluharty.link](https://fluharty.link). Plain HTML, CSS, and JavaScript with no build step. See `claude.md` for the design system and conventions.
+The code for my personal landing page, [fluharty.link](https://fluharty.link). Plain HTML, CSS, and JavaScript with no build step. See `CLAUDE.md` for the design system and conventions.
 
 Everything the public sees lives in `public/`. Everything else (docs, scripts, editor config) stays in the repo and is never served.
 
@@ -25,7 +25,7 @@ Pages project settings, for reference if it ever needs rebuilding:
 | Build command | *(blank; Pages still compiles `functions/`)* |
 | Build output directory | `public` |
 | Custom domains | `fluharty.link`, `www.fluharty.link` |
-| Variables | `CF_ACCOUNT_ID`, secret `CF_ANALYTICS_TOKEN` (see `claude.md`, Pages Function) |
+| Variables | `CF_ACCOUNT_ID`, secret `CF_ANALYTICS_TOKEN` (see `CLAUDE.md`, Pages Function) |
 
 The hit counter is the one piece of server code: `functions/api/hits.js`. Locally and on cPanel it has nothing to answer, so the counter stays hidden.
 
