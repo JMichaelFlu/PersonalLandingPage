@@ -521,6 +521,15 @@ code {
 .xerox a { color: var(--ink); }
 .xerox a:hover { color: var(--pink-deep); }
 
+/* hidden until /api/hits answers with a real number */
+.hit-counter {
+    font-family: var(--font-marker);
+}
+
+.counter-digits b {
+    font-weight: 400;
+}
+
 .footer-hint {
     font-size: 0.875rem;
     color: #4d463c;

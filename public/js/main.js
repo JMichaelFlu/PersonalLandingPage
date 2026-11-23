@@ -9,8 +9,27 @@
     var yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    /* ---------- retired hit counter: clear the visit count it used to store ---------- */
+    /* ---------- hit counter: real totals from Cloudflare Web Analytics, via /api/hits ---------- */
+    // the old counter kept a per-browser count; clear it out (remove this line after mid-2027)
     try { localStorage.removeItem('flu-visits'); } catch (e) { /* storage blocked: nothing stored either */ }
+
+    var counterEl = document.getElementById('hit-counter');
+    if (counterEl && window.fetch) {
+        fetch('/api/hits')
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .then(function (data) {
+                // no number, no counter: never show a made-up one
+                if (!data || typeof data.visits !== 'number' || data.visits < 0) return;
+                counterEl.setAttribute('aria-label', String(data.visits));
+                String(data.visits).padStart(7, '0').split('').forEach(function (d) {
+                    var b = document.createElement('b');
+                    b.textContent = d;
+                    counterEl.appendChild(b);
+                });
+                counterEl.parentNode.hidden = false;
+            })
+            .catch(function () { /* offline or no counter here (local preview, cPanel): stay hidden */ });
+    }
 
     /* ---------- spray splat on click ---------- */
     function makeSplat(x, y) {

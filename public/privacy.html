@@ -79,13 +79,17 @@
                         according to Cloudflare, doesn't fingerprint you; it counts page views, not people. What it
                         records: the page you visited, the site that sent you here, your approximate country, your
                         device and browser type, and how fast the page loaded.</p>
+                    <p>The hit counter in the homepage footer shows the total from those same counts: visits to the
+                        alley in the last 30 days, as one number. Showing it collects nothing new and stores nothing on
+                        your device.</p>
                     <h3>Things Kept in Your Own Browser</h3>
                     <p>The garden saves one small note in your browser's <code>localStorage</code>: which "map of
                         content" sections you opened or closed, so they stay that way when you come back (keys starting
                         with <code>moc-</code>). It never leaves your device and I can't see it. Clearing your browser's
                         site data for garden.fluharty.link removes it.</p>
-                    <p>The main site used to keep a retro hit counter the same way. It's retired, and the site now
-                        deletes the old count (<code>flu-visits</code>) from your browser if it finds one.</p>
+                    <p>The hit counter used to keep a per-browser count the same way. It doesn't anymore, and the
+                        main site now deletes that old count (<code>flu-visits</code>) from your browser if it finds
+                        one.</p>
                     <h3>Code Libraries in the Garden</h3>
                     <p>To draw the note graph, power search, render diagrams, and show icons, the garden asks your
                         browser to load open-source code from public libraries: <a href="https://www.jsdelivr.com/"

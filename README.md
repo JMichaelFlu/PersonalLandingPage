@@ -22,9 +22,12 @@ Pages project settings, for reference if it ever needs rebuilding:
 |---|---|
 | Production branch | `main` |
 | Framework preset | None |
-| Build command | *(blank)* |
+| Build command | `exit 0` (needed so Pages compiles `functions/`) |
 | Build output directory | `public` |
 | Custom domains | `fluharty.link`, `www.fluharty.link` |
+| Variables | `CF_ACCOUNT_ID`, `CF_SITE_TAGS`, secret `CF_ANALYTICS_TOKEN` (see `claude.md`, Pages Function) |
+
+The hit counter is the one piece of server code: `functions/api/hits.js`. Locally and on cPanel it has nothing to answer, so the counter stays hidden.
 
 Pages handles clean URLs and `404.html` on its own. Keep `404.html` in `public/`: without it, Pages serves the homepage for every missing URL.
 
