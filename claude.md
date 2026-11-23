@@ -49,6 +49,12 @@ Two modes share one palette:
 - `.elsewhere`: plain link list with slash separators.
 - `.xerox` (homepage footer), `.page-footer` (subpages).
 - `.page-header` > `.back-link`, `.neon-sign--pink`, `.page-stamp`; then `.sheet` with `section`s.
+- `.notes` > `section.note` (now page only): each section is its own torn wheatpaste note. The paper is `::before` (torn with `clip-path`) and the tape is `::after`, so the tear never clips the tape. Colors and tilt cycle every four notes (paper, lime, sheet, blue); links on blue notes are ink because pink-deep is too dim there.
+
+### Responsive layout
+Mobile first: one narrow column. Breakpoints at the end of style.css:
+- `min-width: 760px`: subpages widen to 760px.
+- `min-width: 960px`: wall widens to 1080px. Homepage posters sit side by side, stickers and "elsewhere" share a row, xerox footer goes horizontal. Reading pages (colophon, privacy) cap at 820px for line length. `.page--wide` (now page) goes 1080px with notes in two masonry columns (CSS `columns`; notes are `inline-flex` so a note and its tape never split across columns).
 
 ## JavaScript (public/js/main.js, vanilla, IIFE)
 - Spray-splat effect on click (skips links, buttons, form fields and the Hypercolor strip)
@@ -117,6 +123,7 @@ Two modes share one palette:
 - Optional: custom-drawn SVG neon lettering for the wordmark (real tube bends and gaps)
 
 ## Version History
+- **v4.3** (November 2026): desktop layout (wider wall, side-by-side posters, two-column now page); now page sections are separate torn-paper notes
 - **v4.2** (November 2026): Google fully removed (incl. Cloudflare's Google tag gateway), cookie-free Cloudflare Web Analytics on both sites, privacy policy covers the whole alley, hit counter rebuilt on real Cloudflare totals (nothing stored in the browser)
 - **v4.1** (November 2026): sign reads "Fluharty Alley"; lime neon bear favicon (the online mascot), apple-touch-icon, theme-color
 - **v4.0** (October 2026): Alley Neon redesign. Wheatpaste posters, hanging neon signs, Hypercolor strip; self-hosted fonts; ticker, Memphis shapes and social icons retired

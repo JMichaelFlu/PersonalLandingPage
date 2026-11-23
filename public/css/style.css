@@ -640,6 +640,95 @@ code {
     color: var(--paper-dim);
 }
 
+/* ---------- now page: one torn wheatpaste note per section ---------- */
+/* the paper lives on ::before so clip-path tears it without clipping the tape (::after) */
+.notes {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-top: 0.75rem;
+}
+
+.note {
+    --note-bg: var(--paper);
+    --note-tear: var(--torn-a);
+    --note-tilt: -1deg;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem 1.4rem 2.2rem;
+    line-height: 1.65;
+    color: #1d1a17;
+    transform: rotate(var(--note-tilt));
+}
+
+.note::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--note-bg);
+    clip-path: var(--note-tear);
+}
+
+.note::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: var(--tape-x, 26px);
+    width: 92px;
+    height: 26px;
+    background: var(--tape);
+    transform: rotate(var(--tape-tilt, -8deg));
+    pointer-events: none;
+}
+
+.note:nth-child(4n + 2) {
+    --note-bg: var(--poster-lime);
+    --note-tear: var(--torn-b);
+    --note-tilt: 0.9deg;
+    --tape-x: calc(50% - 46px);
+    --tape-tilt: 3deg;
+}
+
+.note:nth-child(4n + 3) {
+    --note-tilt: 0.6deg;
+    --note-bg: var(--sheet);
+    --note-tear: var(--torn-b);
+    --tape-x: calc(100% - 118px);
+    --tape-tilt: 7deg;
+}
+
+.note:nth-child(4n + 4) {
+    --note-bg: var(--blue);
+    --note-tilt: -0.7deg;
+    --tape-x: 40px;
+    --tape-tilt: -4deg;
+}
+
+.note h2 {
+    font-family: var(--font-grunge);
+    font-weight: 400;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    color: var(--ink);
+}
+
+.note ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1.25rem;
+}
+
+.note a { color: var(--pink-deep); }
+.note a:hover { color: var(--ink); }
+/* pink-deep is too dim on blue, so links there are ink */
+.note:nth-child(4n + 4) a { color: var(--ink); }
+.note:nth-child(4n + 4) a:hover { color: var(--pink-deep); }
+
 /* colophon swatches */
 .sheet .swatches {
     list-style: none;
@@ -663,6 +752,99 @@ code {
     height: 22px;
     background: var(--sw);
     border: 2px solid var(--ink);
+}
+
+/* ---------- wider screens: use the room instead of a phone column ---------- */
+@media (min-width: 760px) {
+    .page {
+        max-width: 760px;
+        padding-inline: 2rem;
+    }
+
+    .sheet {
+        padding: 2.4rem 2.6rem 2.6rem;
+    }
+}
+
+@media (min-width: 960px) {
+    /* homepage: posters side by side, contact bits share a row */
+    .wall {
+        max-width: 1080px;
+        padding-inline: 2.5rem;
+    }
+
+    .tagline {
+        max-width: 34rem;
+        font-size: 1.25rem;
+    }
+
+    .wall:not(.page) > main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 3rem;
+        row-gap: 2.75rem;
+        align-items: start;
+    }
+
+    .wall:not(.page) > main > .doors,
+    .wall:not(.page) > main > .hyper {
+        grid-column: 1 / -1;
+    }
+
+    .doors {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: stretch;
+    }
+
+    .doors .poster,
+    .doors .poster-card {
+        height: 100%;
+    }
+
+    .poster-card {
+        padding: 2.5rem 2.25rem 2.9rem;
+    }
+
+    /* "elsewhere" sits beside the stickers, so its dashed rule moves to the side */
+    .wall:not(.page) .elsewhere {
+        padding-top: 0;
+        padding-left: 2.5rem;
+        border-top: 0;
+        border-left: 2px dashed rgba(236, 230, 214, 0.25);
+    }
+
+    .xerox {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        column-gap: 2rem;
+        padding: 1.1rem 1.5rem;
+    }
+
+    /* reading pages stay at a comfortable line length; the now page spreads out */
+    .page {
+        max-width: 820px;
+    }
+
+    .page--wide {
+        max-width: 1080px;
+    }
+
+    .page--wide .notes {
+        display: block;
+        columns: 2;
+        column-gap: 3rem;
+    }
+
+    /* inline-block keeps each note (and its tape) whole instead of splitting it across columns */
+    .page--wide .note {
+        display: inline-flex;
+        width: 100%;
+        margin-bottom: 3rem;
+    }
 }
 
 /* ---------- spray splat (click effect, injected by JS) ---------- */
