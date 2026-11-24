@@ -65,15 +65,22 @@ Mobile first: one narrow column. Breakpoints at the end of style.css:
 
 ---
 
+## Now Feed (functions/now.xml.js)
+- `GET /now.xml` is an Atom feed built on request from now.html (fetched with `env.ASSETS.fetch('/now')`), so Jacob only ever edits the page. One entry, titled "News From the Road: <Month D, YYYY>", content = the inner HTML of `article.notes` with root-relative links made absolute.
+- The entry id (`tag:fluharty.link,YYYY-MM-DD:now`) and dates come from the page-stamp `<time datetime>`. Bumping that date = a new post in readers (they keep the history); editing without bumping it pings nobody. Brand-new subscribers only see the current update; an archive of past now pages is an idea on the Roadmap.
+- The function reads the page with two regexes: `class="page-stamp"` ... `<time datetime="YYYY-MM-DD"` and `<article class="notes">`. Keep that markup, or update the function with it. If either is missing it returns 503 (the reason is in the Pages Functions logs).
+- Discovery: `<link rel="alternate" type="application/atom+xml">` in the head of index.html and now.html, plus a visible link in the now page footnote. The garden gets its own separate feed later; people may want one and not the other.
+- Not testable with scripts/serve.py (no Functions locally): check it on the branch preview URL.
+
 ## Pages Function (functions/api/hits.js)
-- The only server code. `GET /api/hits` asks the Cloudflare GraphQL Analytics API (`rumPageloadEventsAdaptiveGroups`, bots excluded) for visits in the last 30 days to fluharty.link, www and the garden, and returns `{ visits, days, asOf }`, cached for an hour. Returns 503 when unconfigured or upstream fails.
+- The hit counter. `GET /api/hits` asks the Cloudflare GraphQL Analytics API (`rumPageloadEventsAdaptiveGroups`, bots excluded) for visits in the last 30 days to fluharty.link, www and the garden, and returns `{ visits, days, asOf }`, cached for an hour. Returns 503 when unconfigured or upstream fails.
 - Counts by hostname (`ALLEY_HOSTS` in the file), not by Web Analytics site: visits have landed under three different site tags over time (zone-wide automatic setup, the Pages switch, the garden plugin). Add a host there if a new subdomain should count. Numbers are Cloudflare's sampled estimates, so at low traffic they move in round steps.
 - Pages compiles `functions/` itself on deploy, even with the build command left blank (confirmed November 2026); there is still no local build.
 - Project variables (Settings → Variables and Secrets, Production and Preview): `CF_ACCOUNT_ID` (plain text) and `CF_ANALYTICS_TOKEN` (secret; API token with only Account Analytics: Read). If the counter vanishes, the token probably expired: `/api/hits` returns 503 and the reason is in the Pages Functions logs.
 - 30 days is a choice, not a limit: Web Analytics allows windows up to about 93 days and keeps about 6 months. An all-time total would need a running sum stored server-side (e.g. KV), never in the browser.
 
 ## Tech Stack
-- HTML5 / CSS3 / vanilla JS: **no frameworks, no build step** (one Pages Function, compiled by Pages)
+- HTML5 / CSS3 / vanilla JS: **no frameworks, no build step** (two Pages Functions, compiled by Pages)
 - Hosting: Cloudflare Pages (free), Git-connected; build command blank, build output directory `public`. DNS on Cloudflare.
 - Deploy: merge to `main` and Pages publishes automatically. No upload step. Every branch also gets a preview URL.
 - Analytics: Cloudflare Web Analytics (cookie-free), switched on in the Pages project (Workers & Pages → project → Metrics → Web Analytics); Cloudflare adds its script at deploy time, so there is no analytics code in the HTML. The zone-wide "automatic setup" site does not reach Pages or Workers responses (checked live in November 2026), so don't rely on it. garden.fluharty.link counts through its own Web Analytics site and a small plugin in the garden repo. No Google Analytics, no Tag Manager.
@@ -100,6 +107,7 @@ Mobile first: one narrow column. Breakpoints at the end of style.css:
 │   ├── sitemap.xml, robots.txt
 │   └── .htaccess            # cPanel-only fallback; Pages ignores it
 ├── functions/api/hits.js    # hit counter endpoint (Pages Function, not in public/)
+├── functions/now.xml.js     # now page Atom feed (Pages Function)
 ├── scripts/serve.py         # local preview server
 ├── README.md                # local preview + deploy settings
 └── CLAUDE.md                # this file (Claude Code loads it automatically; keep the caps)
@@ -126,16 +134,17 @@ Claude sessions can't see each other. This file is the shared memory for site wo
 ## Roadmap
 Status: **next** (agreed, not started), **later** (agreed, waiting on something), **idea** (not decided).
 
-- **next: Now page feed.** Jacob updates /now about weekly, so it gets an Atom feed. Plan: a Pages Function (like `functions/api/hits.js`) reads `now.html` and serves the feed, so there is only one file to edit. One entry per update, its id and date taken from the `page-stamp` `<time datetime>`; feed readers keep the history. Add `<link rel="alternate" type="application/atom+xml">` to the head. Depends on the datetime rule in Site Structure.
 - **next: /links page + webrings.** A blogroll from Jacob's browser bookmarks folder (he exports it, Claude converts it), a wall of 88x31 buttons including our own Alley Neon button, and an OPML file of the blogroll for feed readers. Plus a small prev / random / next webring strip on the homepage near the footer (rings require the widget on the registered page, so a links page alone does not qualify). First ring: IndieWeb webring (sign in with the domain; h-card and rel="me" already exist). Check each ring's current rules before joining.
 - **later: Garden feed.** The garden is the Obsidian Digital Garden plugin: the plugin pushes notes marked for publish to the garden's git repo, and a Cloudflare build generates the site. Jacob also edits some things directly on GitHub. Check whether the garden template already makes a feed before building one; fold it into the Quartz decision. When a garden feed exists, the RSS sticker (`sticker--orange`) goes back in "reach me".
 - **later: Garden move to Quartz**, styled with this design system.
+- **idea: Now page archive** (e.g. `/now/2026-11-12`) so new feed subscribers can see past updates. Costs a copy step every week.
 - **idea: Photo feed.** Each stream gets its own feed later; nothing to design up front.
 - **idea: Start our own webring.** Not before a year of being in others.
 - **idea: New social preview image** in the Alley Neon look.
 - **idea: Custom SVG neon lettering** for the wordmark (real tube bends and gaps).
 
 ## Version History
+- **v4.6** (November 2026): now page Atom feed at /now.xml (Pages Function built from now.html)
 - **v4.5** (November 2026): project notes renamed to CLAUDE.md so Claude Code loads them; Roadmap and cross-session rules added; now page datetime fixed
 - **v4.4** (November 2026): now page notes all light paper with colored tape; colophon rewritten (hosting, AI help, font licenses, privacy, skip-link hint, weight, IndieWeb, changelog)
 - **v4.3** (November 2026): desktop layout (wider wall, side-by-side posters, two-column now page); now page sections are separate torn-paper notes
