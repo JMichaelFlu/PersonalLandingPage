@@ -729,6 +729,47 @@ code {
 .note a { color: var(--pink-deep); }
 .note a:hover { color: var(--ink); }
 
+/* links page: blogroll, buttons */
+.sheet .blogroll {
+    gap: 0.85rem;
+}
+
+.blogroll a:first-child {
+    font-weight: 600;
+}
+
+.feed-link {
+    margin-left: 0.35rem;
+    padding: 0 0.35rem;
+    font-family: var(--font-marker);
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--orange);
+}
+
+.sheet .feed-link { color: var(--ink); }
+.sheet .feed-link:hover { color: var(--ink); background: var(--poster-lime); }
+
+.buttons img {
+    display: block;
+    image-rendering: pixelated;
+}
+
+.snippet {
+    overflow-x: auto;
+    padding: 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    background: var(--ink);
+}
+
+.snippet code {
+    padding: 0;
+}
+
 /* colophon swatches */
 .sheet .swatches {
     list-style: none;

@@ -15,7 +15,10 @@ Jacob Fluharty's personal site: a small front door to the digital garden and the
 2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing, and keep the `<time datetime="YYYY-MM-DD">` attribute matching the visible date: search engines (and the planned feed) read the attribute, not the text.
 3. **colophon.html** (`/colophon`): stack, hosting, AI help, look, palette, type + licenses, privacy, accessibility, page weight, IndieWeb bits, changelog. Update its changelog and `page-stamp` date with every version below, and re-check facts there whenever hosting, fonts, analytics, or page weight change.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
-5. **404.html**: served by the host for any missing URL. `noindex`, not in the sitemap. Must exist: without it, Cloudflare Pages serves the homepage for every missing URL.
+5. **links.html** (`/links`): blogroll ("Gardens I Wander Through", "Required Reading for Garden Nerds"), the 88x31 button with a copy-paste snippet, and the webrings section. Each entry is `<li><a>Name</a> [feed tag]<br>one-liner</li>`. The one-liners are Claude drafts from November 2026 (written from each site's own description); Jacob is rewriting them and trimming the list. Keep `blogroll.opml` in step with the list: every entry that has a feed belongs in it.
+6. **blogroll.opml**: the blogroll's feeds for import into a feed reader, plus the now feed. Linked from /links and advertised with `<link rel="blogroll">`.
+7. **buttons/fluharty-alley-88x31.png**: our 88x31 button ("Fluharty" pink neon script, "ALLEY" lime neon). Rendered once from HTML with the site fonts; redraw it by hand-editing a copy if the look changes.
+8. **404.html**: served by the host for any missing URL. `noindex`, not in the sitemap. Must exist: without it, Cloudflare Pages serves the homepage for every missing URL.
 
 Clean URLs come from the host (see Hosting). Always link internally as `/now`, never `/now.html` or `https://fluharty.link/now`.
 
@@ -97,7 +100,9 @@ Mobile first: one narrow column. Breakpoints at the end of style.css:
 ```
 /
 ├── public/                  # the published site, nothing else
-│   ├── index.html, now.html, colophon.html, privacy.html, 404.html
+│   ├── index.html, now.html, links.html, colophon.html, privacy.html, 404.html
+│   ├── blogroll.opml        # blogroll feeds for feed readers
+│   ├── buttons/             # 88x31 button(s)
 │   ├── css/style.css        # all styles
 │   ├── js/main.js           # all interactions
 │   ├── fonts/               # self-hosted woff2 + licenses/
@@ -134,7 +139,9 @@ Claude sessions can't see each other. This file is the shared memory for site wo
 ## Roadmap
 Status: **next** (agreed, not started), **later** (agreed, waiting on something), **idea** (not decided).
 
-- **next: /links page + webrings.** A blogroll from Jacob's browser bookmarks folder (he exports it, Claude converts it), a wall of 88x31 buttons including our own Alley Neon button, and an OPML file of the blogroll for feed readers. Plus a small prev / random / next webring strip on the homepage near the footer (rings require the widget on the registered page, so a links page alone does not qualify). First ring: IndieWeb webring (sign in with the domain; h-card and rel="me" already exist). Check each ring's current rules before joining.
+- **next (Jacob): rewrite the /links blurbs** in his own words and cut sites he no longer reads. Remove the draft comment in links.html when done. Remove dropped feeds from blogroll.opml too.
+- **next (Jacob): join the IndieWeb webring** at https://xn--sr8hvo.ws/ by signing in with fluharty.link (h-card and rel="me" are already in place). Then Claude adds the ring's prev / random / next strip to the homepage near the footer (rings require the widget on the registered page) and updates the Webrings section of /links. Check each ring's current rules before joining. Other rings and other people's 88x31 buttons come after.
+- **idea: Submit /now to nownownow.com** so the now page is listed in the directory.
 - **later: Garden feed.** The garden is the Obsidian Digital Garden plugin: the plugin pushes notes marked for publish to the garden's git repo, and a Cloudflare build generates the site. Jacob also edits some things directly on GitHub. Check whether the garden template already makes a feed before building one; fold it into the Quartz decision. When a garden feed exists, the RSS sticker (`sticker--orange`) goes back in "reach me".
 - **later: Garden move to Quartz**, styled with this design system.
 - **idea: Now page archive** (e.g. `/now/2026-11-12`) so new feed subscribers can see past updates. Costs a copy step every week.
@@ -144,6 +151,7 @@ Status: **next** (agreed, not started), **later** (agreed, waiting on something)
 - **idea: Custom SVG neon lettering** for the wordmark (real tube bends and gaps).
 
 ## Version History
+- **v4.7** (November 2026): /links page (blogroll with draft one-liners, OPML, 88x31 button, webrings placeholder); Links added to the homepage footer
 - **v4.6** (November 2026): now page Atom feed at /now.xml (Pages Function built from now.html)
 - **v4.5** (November 2026): project notes renamed to CLAUDE.md so Claude Code loads them; Roadmap and cross-session rules added; now page datetime fixed
 - **v4.4** (November 2026): now page notes all light paper with colored tape; colophon rewritten (hosting, AI help, font licenses, privacy, skip-link hint, weight, IndieWeb, changelog)
