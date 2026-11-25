@@ -11,7 +11,8 @@ Jacob Fluharty's personal site: a small front door to the digital garden and the
 
 ## Site Structure
 
-1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, xerox footer. Carries the h-card and JSON-LD Person data.
+1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, IndieWeb Webring strip, xerox footer. Carries the h-card and JSON-LD Person data.
+   - The `<body class="h-card">` is the representative h-card (its `u-url u-uid` is the homepage). The IndieWeb Webring builds Jacob's profile from it: `p-name` (footer), `p-note` (the tagline), `u-photo` (a `<data>` pointing at apple-touch-icon.png, the bear mascot). Swap that value for a real headshot if Jacob wants one. Changing any of these means re-signing in at the ring so it re-reads the profile.
 2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing, and keep the `<time datetime="YYYY-MM-DD">` attribute matching the visible date: search engines (and the planned feed) read the attribute, not the text.
 3. **colophon.html** (`/colophon`): stack, hosting, AI help, look, palette, type + licenses, privacy, accessibility, page weight, IndieWeb bits, changelog. Update its changelog and `page-stamp` date with every version below, and re-check facts there whenever hosting, fonts, analytics, or page weight change.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
@@ -50,6 +51,7 @@ Two modes share one palette:
 - `.hyper` > `.hyper-strip` (`--thin` on pages): heat spot position is `--hx`/`--hy`, registered with `@property` so it drifts back when it cools. Whole block is `aria-hidden`; no text ever sits on the gradient.
 - `.stickers` > `.sticker--pink|paper|blue|orange`. `.sticker-torn` wraps a torn one: drop shadow and focus outline live on the `<li>` because `clip-path` eats them on the link.
 - `.elsewhere`: plain link list with slash separators.
+- `.webring` (homepage, just above the footer): the ring's required ← / "An IndieWeb Webring 🕸💍" / → links, from the ring's own snippet plus aria-labels on the arrows. The ring must see it on the homepage, so never move it to another page. The prev/next links work out where you are from the Referer, so don't add `rel="noreferrer"` or a no-referrer policy.
 - `.xerox` (homepage footer), `.page-footer` (subpages).
 - `.page-header` > `.back-link`, `.neon-sign--pink`, `.page-stamp`; then `.sheet` with `section`s.
 - `.notes` > `section.note` (now page only): each section is its own torn wheatpaste note. The paper is `::before` (torn with `clip-path`) and the tape is `::after`, so the tear never clips the tape. All notes are light paper (paper/sheet alternating) with ink text; the color is the tape, cycling lime, pink, cyan, orange. Saturated backgrounds behind long reading text were tried and rejected.
@@ -140,7 +142,7 @@ Claude sessions can't see each other. This file is the shared memory for site wo
 Status: **next** (agreed, not started), **later** (agreed, waiting on something), **idea** (not decided).
 
 - **next (Jacob): rewrite the /links blurbs** in his own words and cut sites he no longer reads. Remove the draft comment in links.html when done. Remove dropped feeds from blogroll.opml too.
-- **next (Jacob): join the IndieWeb webring** at https://xn--sr8hvo.ws/ by signing in with fluharty.link (h-card and rel="me" are already in place). Then Claude adds the ring's prev / random / next strip to the homepage near the footer (rings require the widget on the registered page) and updates the Webrings section of /links. Check each ring's current rules before joining. Other rings and other people's 88x31 buttons come after.
+- **done: IndieWeb Webring** (November 2026): Jacob signed in with GitHub as the authenticator; strip on the homepage. Other rings and other people's 88x31 buttons can follow.
 - **idea: Submit /now to nownownow.com** so the now page is listed in the directory.
 - **later: Garden feed.** The garden is the Obsidian Digital Garden plugin: the plugin pushes notes marked for publish to the garden's git repo, and a Cloudflare build generates the site. Jacob also edits some things directly on GitHub. Check whether the garden template already makes a feed before building one; fold it into the Quartz decision. When a garden feed exists, the RSS sticker (`sticker--orange`) goes back in "reach me".
 - **later: Garden move to Quartz**, styled with this design system.
@@ -151,6 +153,7 @@ Status: **next** (agreed, not started), **later** (agreed, waiting on something)
 - **idea: Custom SVG neon lettering** for the wordmark (real tube bends and gaps).
 
 ## Version History
+- **v4.8** (November 2026): joined the IndieWeb Webring (homepage strip); h-card gains p-note and u-photo for the ring profile
 - **v4.7** (November 2026): /links page (blogroll with draft one-liners, OPML, 88x31 button, webrings placeholder); Links added to the homepage footer
 - **v4.6** (November 2026): now page Atom feed at /now.xml (Pages Function built from now.html)
 - **v4.5** (November 2026): project notes renamed to CLAUDE.md so Claude Code loads them; Roadmap and cross-session rules added; now page datetime fixed

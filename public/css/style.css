@@ -507,6 +507,31 @@ code {
     color: var(--muted);
 }
 
+/* ---------- webring strip (homepage; the ring needs it visible here) ---------- */
+.webring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    font-family: var(--font-marker);
+    font-size: 1.05rem;
+    color: var(--paper-dim);
+    text-align: center;
+}
+
+.webring > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
 /* ---------- footers ---------- */
 .xerox {
     display: flex;
@@ -828,7 +853,8 @@ code {
     }
 
     .wall:not(.page) > main > .doors,
-    .wall:not(.page) > main > .hyper {
+    .wall:not(.page) > main > .hyper,
+    .wall:not(.page) > main > .webring {
         grid-column: 1 / -1;
     }
 
