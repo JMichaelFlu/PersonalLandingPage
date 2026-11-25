@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="2.0">
+  <head>
+    <title>Jacob Fluharty's blogroll</title>
+    <ownerName>Jacob Fluharty</ownerName>
+    <docs>https://opml.org/spec2.opml</docs>
+  </head>
+  <body>
+    <outline text="Gardens I wander through" title="Gardens I wander through">
+      <outline type="rss" text="Maggie Appleton" title="Maggie Appleton" xmlUrl="https://maggieappleton.com/rss.xml" htmlUrl="https://maggieappleton.com/"/>
+      <outline type="rss" text="Yenly Ma" title="Yenly Ma" xmlUrl="https://yenly.wtf/feed.xml" htmlUrl="https://yenly.wtf/"/>
+      <outline type="rss" text="Chris Aldrich (BoffoSocko)" title="Chris Aldrich (BoffoSocko)" xmlUrl="https://boffosocko.com/feed/" htmlUrl="https://boffosocko.com/"/>
+      <outline type="rss" text="Sébastien Dubois" title="Sébastien Dubois" xmlUrl="https://www.dsebastien.net/rss/" htmlUrl="https://www.dsebastien.net/"/>
+      <outline type="rss" text="Joshua Rodrigues" title="Joshua Rodrigues" xmlUrl="https://joshuarodrigues.dev/rss.xml" htmlUrl="https://joshuarodrigues.dev/"/>
+    </outline>
+    <outline text="Required reading for garden nerds" title="Required reading for garden nerds">
+      <outline type="rss" text="The Garden and the Stream" title="The Garden and the Stream" xmlUrl="https://hapgood.us/feed/" htmlUrl="https://hapgood.us/2015/10/17/the-garden-and-the-stream-a-technopastoral/"/>
+      <outline type="rss" text="Digital Garden Terms of Service" title="Digital Garden Terms of Service" xmlUrl="https://www.swyx.io/rss.xml" htmlUrl="https://www.swyx.io/digital-garden-tos"/>
+      <outline type="rss" text="How to Build a Digital Garden with TiddlyWiki" title="How to Build a Digital Garden with TiddlyWiki" xmlUrl="https://nesslabs.com/feed" htmlUrl="https://nesslabs.com/digital-garden-tiddlywiki"/>
+    </outline>
+    <outline type="rss" text="News From the Road (Jacob Fluharty)" title="News From the Road (Jacob Fluharty)" xmlUrl="https://fluharty.link/now.xml" htmlUrl="https://fluharty.link/now"/>
+  </body>
+</opml>
