@@ -12,7 +12,7 @@ Jacob Fluharty's personal site: a small front door to the digital garden and the
 ## Site Structure
 
 1. **index.html** (`/`): "Fluharty Alley" neon sign, two poster doors (Garden, Now), Hypercolor strip, "reach me" stickers, "find me elsewhere" list, IndieWeb Webring strip, xerox footer. Carries the h-card and JSON-LD Person data.
-   - The `<body class="h-card">` is the representative h-card (its `u-url u-uid` is the homepage). The IndieWeb Webring builds Jacob's profile from it: `p-name` (footer), `p-note` (the tagline), `u-photo` (a `<data>` pointing at apple-touch-icon.png, the bear mascot). Swap that value for a real headshot if Jacob wants one. Changing any of these means re-signing in at the ring so it re-reads the profile.
+   - The `<body class="h-card">` is the representative h-card (its `u-url u-uid` is the homepage). The IndieWeb Webring builds Jacob's profile from it: `p-name` (footer), `p-note` (the tagline), `u-photo` (a `<data>` pointing at profile.jpg, a 400x400 crop of Jacob's illustrated portrait; the JSON-LD `image` uses the same file). To change the photo, replace profile.jpg with another square image under the same name. Changing any of these means re-signing in at the ring so it re-reads the profile.
 2. **now.html** (`/now`): Life, Reading, Listening, Working On. Update the `page-stamp` date when editing, and keep the `<time datetime="YYYY-MM-DD">` attribute matching the visible date: search engines (and the planned feed) read the attribute, not the text.
 3. **colophon.html** (`/colophon`): stack, hosting, AI help, look, palette, type + licenses, privacy, accessibility, page weight, IndieWeb bits, changelog. Update its changelog and `page-stamp` date with every version below, and re-check facts there whenever hosting, fonts, analytics, or page weight change.
 4. **privacy.html** (`/privacy`): what the site collects. Update it whenever analytics, fonts, or third-party requests change.
@@ -110,6 +110,7 @@ Mobile first: one narrow column. Breakpoints at the end of style.css:
 │   ├── fonts/               # self-hosted woff2 + licenses/
 │   ├── favicon.svg          # lime neon bear on a cyan neon sign (bold, built for 16 px)
 │   ├── apple-touch-icon.png # 180x180 detailed bear for phone home screens
+│   ├── profile.jpg          # 400x400 profile photo (h-card u-photo, JSON-LD image)
 │   ├── social-preview.jpg   # 1200x630 OG image
 │   ├── sitemap.xml, robots.txt
 │   └── .htaccess            # cPanel-only fallback; Pages ignores it
@@ -153,6 +154,7 @@ Status: **next** (agreed, not started), **later** (agreed, waiting on something)
 - **idea: Custom SVG neon lettering** for the wordmark (real tube bends and gaps).
 
 ## Version History
+- **v4.9** (November 2026): profile photo (illustrated portrait) for the h-card and JSON-LD; fixed a trailing comma that made the JSON-LD invalid
 - **v4.8** (November 2026): joined the IndieWeb Webring (homepage strip); h-card gains p-note and u-photo for the ring profile
 - **v4.7** (November 2026): /links page (blogroll with draft one-liners, OPML, 88x31 button, webrings placeholder); Links added to the homepage footer
 - **v4.6** (November 2026): now page Atom feed at /now.xml (Pages Function built from now.html)
