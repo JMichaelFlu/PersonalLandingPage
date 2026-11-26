@@ -136,66 +136,21 @@ Mobile first: one narrow column. Breakpoints at the end of style.css:
 ## Working Across Sessions
 Claude sessions can't see each other. This file is the shared memory for site work.
 - Start of a session: read Roadmap below before proposing anything new.
-- End of a session: record any decision, plan change, or newly opened item in Roadmap (or the relevant section), in the same PR as the work.
+- End of a session: record any decision or plan change in Roadmap (or the relevant section), in the same PR as the work. New or finished tasks go in the vault project note, not here.
 - Jacob's general working rules live in his AI Operating Guide (Google Drive, 02 Areas). Site specifics live here.
-- Finish open items before starting new ones; if something new comes up, add it to Roadmap and ask what it replaces.
+- Finish open items before starting new ones; if something new comes up, add it to the vault (a project note or Someday Maybe) and ask what it replaces.
 
 ## Roadmap
+**Tasks live in Jacob's Obsidian vault, not here** (since November 2026). The vault is the private repo `JMichaelFlu/BearlyTendedGardenGit`; project notes are in `05 Projects/`, and ideas and parked items are in `05 Projects/Someday Maybe.md`. If the vault isn't in your session, ask Jacob or attach that repo. Jacob's own copy on his Mac is the live one: sessions connected to it should work there. This section keeps what sessions need to know: status, context, and settled decisions.
+
 Status: **next** (agreed, not started), **later** (agreed, waiting on something), **idea** (not decided).
 
-### /ai launch checklist (Jacob's task log, November 2026)
-Work top to bottom; tick items off here as they land (one PR can tick several). Details and reasons: AIPageOutline.md and DraftingAIPolicy.md (Google Drive, 02 Areas/AIOperationsAndLogs). Hands-on rule applies: Jacob makes the changes, Claude teaches.
-
-**Copy (fluharty.link)**
-- [ ] /links: rewrite every blurb in his own words, cut sites he no longer reads, drop their feeds from blogroll.opml, remove the draft comment
-- [ ] /colophon: rework the body heavily; rewrite "Help From a Robot" to point to /ai; say Claude drew the bear mascot
-- [ ] /404: rework "or check the digital garden if you were after"
-- [ ] Homepage small copy: Konami hint, hit counter text, webring line
-- [ ] /now: the feed footer line
-- [ ] Meta and OG descriptions on every page, and the palette names on /colophon (July 2026 rebuild copy)
-- [ ] /privacy: keep the AI draft; fact-check every claim against how the site works
-- [ ] Log anything left unreworked, with why, in DraftingAIPolicy.md (section 6 list)
-
-**Images**
-- [ ] Rework profile.jpg (h-card photo; re-sign in at the webring afterward)
-- [ ] Rework social-preview.jpg and fix its alt text
-- [ ] Favicon, apple-touch-icon, 88x31 button: rework, or keep and list on /ai
-- [ ] Garden: rework the Welcome note banner; give it real alt text (live alt reads "GeminiGardenBanner.jpeg800") plus the AI note
-- [ ] Garden: rework logo.png and favicon.svg, or list them on /ai
-- [ ] Every AI-generated image still up at launch: alt note naming the tool, caption where possible, or a line in "Currently AI-generated"
-
-**Cloudflare (hosting review session, before launch)**
-- [ ] Turn off the managed robots.txt and the AI bot firewall block on both hosts; check Bot Preference Sync; keep normal bot protection and rate limiting
-- [ ] Re-fetch both live robots.txt files and re-run the user-agent check (expect 200, not 403)
-
-**Write and ship /ai**
-- [ ] Write the /ai copy from AIPageOutline.md (400 to 600 words plus the AI-generated list)
-- [ ] Gemini reviews the written page against the confirmed positions
-- [ ] Build public/ai.html from the now.html skeleton; add it to sitemap.xml; link it from the colophon (and footer if wanted)
-- [ ] After launch: add the policy and a pointer to the hands-on rule to the AIOperatingGuide; clear its stale Emergency Fund open item
-
-**Done**
-- [x] Garden: unpublished "Using AI in Tutoring" and "Initial Session Progress Note" (both 404 on the live garden, checked November 2026)
-
-
-- **next (Jacob): review all flagged Claude content.** Jacob needs to make a manual review of all flagged Claude content and rework the content that is intended to represent his voice. Any content that is not reworked needs to be noted by Jacob and submitted to the workspace document (DraftingAIPolicy.md, Google Drive, 02 Areas/AIOperationsAndLogs) for transparency, with an explanation. Must be done before /ai goes live. Flagged by the November 2026 copy audit (full list in that document):
-  - /links: all copy, including the blurbs (see the item below).
-  - /colophon: most body text, including "Help From a Robot" (the current AI disclosure, written by Claude) and "house mascot, drawn for this site" (Claude drew the bear favicon as SVG; say so).
-  - /privacy: nearly all body text.
-  - Small copy: the Konami hint, hit counter text, webring line, now-feed footer line, OG/meta descriptions, social preview alt text.
-  - Probably Claude: copy from the July 2026 rebuild (d584dca, Claude co-author), such as the /now and /colophon meta descriptions, the palette names, and "Fun shouldn't cost anyone access".
-- **next (Jacob): rewrite the /links blurbs** in his own words and cut sites he no longer reads. Remove the draft comment in links.html when done. Remove dropped feeds from blogroll.opml too.
-- **next: /ai page.** Jacob is outlining it with Claude, writes the final copy himself, Gemini reviews. The project record (research, decisions, audit) is DraftingAIPolicy.md in Google Drive, 02 Areas/AIOperationsAndLogs. The outline Jacob writes from (page sections, companion-post outline, cut list, before-launch checklist) is AIPageOutline.md in the same folder; Gemini reviewed it (Ship with fixes) and it is revised and ready to write from. Jacob works through the checklist below. Settled so far: one public policy; sections Writing, Images and media, Code, Research and thinking, Bots reading the site, Why; anything that speaks as Jacob (posts, notes, /now, colophon, /links, 404, the disclosure itself) is his, heavily reworked; the privacy policy is AI-led and fact-checked by Jacob, not lawyer-reviewed; nuts-and-bolts copy (commit messages, alt text, meta descriptions) may be AI-drafted and reviewed. Images: prompting alone, however many rounds, is "AI-generated"; "AI-assisted" means Jacob edited or assembled it by hand. AI-generated images get an alt note naming the tool that made that image ("AI-generated with Gemini, not hand-edited"; "drawn by Claude as code" for the Claude-made ones) and a caption where possible; ones with no caption spot are listed on /ai under "Currently AI-generated". Today that is every image on the site: profile.jpg and social-preview.jpg (Gemini, being reworked), favicon.svg and apple-touch-icon.png (Claude, SVG), the 88x31 button (Claude); on the garden, the Welcome note banner (Gemini, not hand-edited), logo.png and favicon.svg (AI-generated). Code: every piece starts with Jacob describing it; Claude Code writes the first version and walks him through it; HTML and CSS are where he is hands-on today; JavaScript, the Pages Functions, and hosting are Claude-written for now and he is learning them; the Claude and Gemini editor extensions are installed but rarely used. When /ai ships: point /colophon's "Help From a Robot" at it, add it to sitemap.xml, and add the policy to Jacob's AI Operating Guide so future sessions flag work that would break it.
-- **later: Hosting review, after /ai ships.** Walk Jacob through the whole setup step by step (Cloudflare Pages, DNS, what each record does) and decide whether to keep NixiHost. NixiHost is the cPanel fallback from before the move to Pages; if it goes, delete `public/.htaccess` too. Jacob valued learning the backend hands-on in cPanel, so this is a teaching session as much as a decision. Email and Bluesky DNS records stay untouched. **Before /ai ships, in this session:** make the bot settings match the /ai stance (open to all bots, Jacob's decision, November 2026). Two things block AI crawlers today on both fluharty.link and the garden, neither in this repo: Cloudflare's managed robots.txt (prepends `ai-train=no` and disallows about 30 crawlers, ClaudeBot and GPTBot included) and a firewall-level block (requests with GPTBot, ClaudeBot or CCBot user agents get a 403 with the body `blocked`; likely the AI bot blocking toggle, not confirmed, because the API token can't read bot management or custom rules). Turn both off, keep normal bot protection and rate limiting, then re-fetch both live robots.txt files and re-run the user-agent check.
+- **next: /ai page** (vault: `AiPageLaunch.md`). The outline is done; Jacob writes the final copy himself, Gemini reviews. The project record (research, decisions, audit) is DraftingAIPolicy.md in Google Drive, 02 Areas/AIOperationsAndLogs. The outline Jacob writes from (page sections, companion-post outline, cut list, before-launch checklist) is AIPageOutline.md in the same folder; Gemini reviewed it (Ship with fixes) and it is revised and ready to write from. Settled so far: one public policy; sections Writing, Images and media, Code, Research and thinking, Bots reading the site, Why; anything that speaks as Jacob (posts, notes, /now, colophon, /links, 404, the disclosure itself) is his, heavily reworked; the privacy policy is AI-led and fact-checked by Jacob, not lawyer-reviewed; nuts-and-bolts copy (commit messages, alt text, meta descriptions) may be AI-drafted and reviewed. Images: prompting alone, however many rounds, is "AI-generated"; "AI-assisted" means Jacob edited or assembled it by hand. AI-generated images get an alt note naming the tool that made that image ("AI-generated with Gemini, not hand-edited"; "drawn by Claude as code" for the Claude-made ones) and a caption where possible; ones with no caption spot are listed on /ai under "Currently AI-generated". Today that is every image on the site: profile.jpg and social-preview.jpg (Gemini, being reworked), favicon.svg and apple-touch-icon.png (Claude, SVG), the 88x31 button (Claude); on the garden, the Welcome note banner (Gemini, not hand-edited), logo.png and favicon.svg (AI-generated). Code: every piece starts with Jacob describing it; Claude Code writes the first version and walks him through it; HTML and CSS are where he is hands-on today; JavaScript, the Pages Functions, and hosting are Claude-written for now and he is learning them; the Claude and Gemini editor extensions are installed but rarely used. Copy left unreworked after Jacob's review gets logged, with why, in DraftingAIPolicy.md (Brainstorming Session 1, section 6). The November 2026 copy audit there lists every flagged item; the short version: all of /links, most of /colophon and /privacy, and the small copy (Konami hint, hit counter, webring line, now-feed footer, meta and OG descriptions).
+- **later: Hosting review, after /ai ships** (vault: `HostingReview.md`, on hold). Walk Jacob through the whole setup step by step (Cloudflare Pages, DNS, what each record does) and decide whether to keep NixiHost. NixiHost is the cPanel fallback from before the move to Pages; if it goes, delete `public/.htaccess` too. Jacob valued learning the backend hands-on in cPanel, so this is a teaching session as much as a decision. Email and Bluesky DNS records stay untouched. **Before /ai ships** (tasks in `AiPageLaunch.md`): make the bot settings match the /ai stance (open to all bots, Jacob's decision, November 2026). Two things block AI crawlers today on both fluharty.link and the garden, neither in this repo: Cloudflare's managed robots.txt (prepends `ai-train=no` and disallows about 30 crawlers, ClaudeBot and GPTBot included) and a firewall-level block (requests with GPTBot, ClaudeBot or CCBot user agents get a 403 with the body `blocked`; likely the AI bot blocking toggle, not confirmed, because the API token can't read bot management or custom rules). Both still in place on 2026-11-26 (ClaudeBot user agent gets 403 on both hosts).
+- **later: Garden feed** (in Someday Maybe). The garden is the Obsidian Digital Garden plugin: the plugin pushes notes marked for publish to the garden's git repo, and a Cloudflare build generates the site. Jacob also edits some things directly on GitHub. Check whether the garden template already makes a feed before building one; fold it into the Quartz decision. When a garden feed exists, the RSS sticker (`sticker--orange`) goes back in "reach me".
+- **later: Garden move to Quartz**, styled with this design system (in Someday Maybe; design work waits for the design freeze to end after New Year 2027).
+- **ideas** (all in Someday Maybe): submit /now to nownownow.com; a now page archive (e.g. `/now/2026-11-12`); a photo feed; our own webring (not before a year of being in others); a new social preview image in the Alley Neon look; custom SVG neon lettering for the wordmark.
 - **done: IndieWeb Webring** (November 2026): Jacob signed in with GitHub as the authenticator; strip on the homepage. Other rings and other people's 88x31 buttons can follow.
-- **idea: Submit /now to nownownow.com** so the now page is listed in the directory.
-- **later: Garden feed.** The garden is the Obsidian Digital Garden plugin: the plugin pushes notes marked for publish to the garden's git repo, and a Cloudflare build generates the site. Jacob also edits some things directly on GitHub. Check whether the garden template already makes a feed before building one; fold it into the Quartz decision. When a garden feed exists, the RSS sticker (`sticker--orange`) goes back in "reach me".
-- **later: Garden move to Quartz**, styled with this design system.
-- **idea: Now page archive** (e.g. `/now/2026-11-12`) so new feed subscribers can see past updates. Costs a copy step every week.
-- **idea: Photo feed.** Each stream gets its own feed later; nothing to design up front.
-- **idea: Start our own webring.** Not before a year of being in others.
-- **idea: New social preview image** in the Alley Neon look.
-- **idea: Custom SVG neon lettering** for the wordmark (real tube bends and gaps).
 
 ## Version History
 - **v4.9** (November 2026): profile photo (illustrated portrait) for the h-card and JSON-LD; fixed a trailing comma that made the JSON-LD invalid
