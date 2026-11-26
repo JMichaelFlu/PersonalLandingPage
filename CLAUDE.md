@@ -142,7 +142,14 @@ Claude sessions can't see each other. This file is the shared memory for site wo
 ## Roadmap
 Status: **next** (agreed, not started), **later** (agreed, waiting on something), **idea** (not decided).
 
+- **next (Jacob): review all flagged Claude content.** Jacob needs to make a manual review of all flagged Claude content and rework the content that is intended to represent his voice. Any content that is not reworked needs to be noted by Jacob and submitted to the workspace document (DraftingAIPolicy.md, Google Drive, 02 Areas/AIOperationsAndLogs) for transparency, with an explanation. Must be done before /ai goes live. Flagged by the November 2026 copy audit (full list in that document):
+  - /links: all copy, including the blurbs (see the item below).
+  - /colophon: most body text, including "Help From a Robot" (the current AI disclosure, written by Claude) and "house mascot, drawn for this site" (Claude drew the bear favicon as SVG; say so).
+  - /privacy: nearly all body text.
+  - Small copy: the Konami hint, hit counter text, webring line, now-feed footer line, OG/meta descriptions, social preview alt text.
+  - Probably Claude: copy from the July 2026 rebuild (d584dca, Claude co-author), such as the /now and /colophon meta descriptions, the palette names, and "Fun shouldn't cost anyone access".
 - **next (Jacob): rewrite the /links blurbs** in his own words and cut sites he no longer reads. Remove the draft comment in links.html when done. Remove dropped feeds from blogroll.opml too.
+- **next: /ai page.** Jacob is outlining it with Claude, writes the final copy himself, Gemini reviews. The project record (research, decisions, audit) is DraftingAIPolicy.md in Google Drive, 02 Areas/AIOperationsAndLogs. Settled so far: one public policy; sections Writing, Images and media, Code, Research and thinking, Bots reading the site, Why; site-wide rules on /ai plus a caption or alt note on any AI-made media that got no real editing; prose is Jacob's, nuts-and-bolts copy (commit messages, alt text, meta descriptions, page plumbing) may be AI-drafted and reviewed. When /ai ships: point /colophon's "Help From a Robot" at it, add it to sitemap.xml, and add the policy to Jacob's AI Operating Guide so future sessions flag work that would break it.
 - **done: IndieWeb Webring** (November 2026): Jacob signed in with GitHub as the authenticator; strip on the homepage. Other rings and other people's 88x31 buttons can follow.
 - **idea: Submit /now to nownownow.com** so the now page is listed in the directory.
 - **later: Garden feed.** The garden is the Obsidian Digital Garden plugin: the plugin pushes notes marked for publish to the garden's git repo, and a Cloudflare build generates the site. Jacob also edits some things directly on GitHub. Check whether the garden template already makes a feed before building one; fold it into the Quartz decision. When a garden feed exists, the RSS sticker (`sticker--orange`) goes back in "reach me".
